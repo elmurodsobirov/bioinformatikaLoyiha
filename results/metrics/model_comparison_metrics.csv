@@ -1,0 +1,6 @@
+Model,Accuracy,Precision,Recall (Sensitivity),Specificity,F1-Score,ROC-AUC (Test),5-Fold CV ROC-AUC,PR-AUC,MCC
+XGBoost,1.0,1.0,1.0,1.0,1.0,1.0,1.0000 ± 0.0000,1.0,1.0
+Random Forest,1.0,1.0,1.0,1.0,1.0,1.0,1.0000 ± 0.0000,1.0,1.0
+Support Vector Machine (RBF),1.0,1.0,1.0,1.0,1.0,1.0,1.0000 ± 0.0000,1.0,1.0
+Logistic Regression,1.0,1.0,1.0,1.0,1.0,1.0,1.0000 ± 0.0000,1.0,1.0
+K-Nearest Neighbors (KNN),1.0,1.0,1.0,1.0,1.0,1.0,1.0000 ± 0.0000,1.0,1.0
