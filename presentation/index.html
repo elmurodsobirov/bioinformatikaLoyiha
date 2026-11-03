@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biologik Maʼlumotlar Asosida Kasalliklarni Mashinali Oʻqitish Yordamida Bashoratlash (GEO/TCGA, scikit-learn, XGBoost)</title>
+  
+  <!-- KaTeX for crisp LaTeX mathematical rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
   <style>
     :root {
       --bg-dark: #070b14;
@@ -36,33 +42,46 @@
       user-select: none;
     }
 
-    /* Ambient Lighting */
+    /* Ambient Lighting with floating animations */
     .ambient-glow {
       position: absolute;
-      width: 600px;
-      height: 600px;
+      width: 650px;
+      height: 650px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%);
-      top: -100px;
-      right: -100px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(168, 85, 247, 0.06) 50%, transparent 70%);
+      top: -120px;
+      right: -120px;
       z-index: 0;
       pointer-events: none;
-      filter: blur(50px);
+      filter: blur(55px);
+      animation: orbFloat1 18s ease-in-out infinite alternate;
     }
     .ambient-glow-2 {
       position: absolute;
-      width: 500px;
-      height: 500px;
+      width: 550px;
+      height: 550px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-      bottom: -100px;
-      left: -100px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+      bottom: -120px;
+      left: -120px;
       z-index: 0;
       pointer-events: none;
-      filter: blur(60px);
+      filter: blur(65px);
+      animation: orbFloat2 22s ease-in-out infinite alternate;
     }
 
-    /* Top Progress Bar */
+    @keyframes orbFloat1 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-60px, 80px) scale(1.15); }
+      100% { transform: translate(40px, 40px) scale(0.95); }
+    }
+    @keyframes orbFloat2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(70px, -50px) scale(1.2); }
+      100% { transform: translate(-30px, 30px) scale(1); }
+    }
+
+    /* Top Progress Bar with shimmer animation */
     .progress-container {
       position: fixed;
       top: 0;
@@ -75,9 +94,15 @@
     .progress-bar {
       height: 100%;
       width: 5.5%;
-      background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
+      background-size: 200% 100%;
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+      animation: barShimmer 3s linear infinite;
+    }
+    @keyframes barShimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
     }
 
     /* Header Bar */
@@ -98,21 +123,23 @@
       background: rgba(56, 189, 248, 0.15);
       border: 1px solid rgba(56, 189, 248, 0.4);
       color: var(--primary);
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
       font-weight: 600;
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
     }
     .header-authors {
       display: flex;
       align-items: center;
       gap: 12px;
       background: rgba(255, 255, 255, 0.04);
-      padding: 4px 14px;
+      padding: 4px 16px;
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
     }
     .header-authors strong {
       color: #38bdf8;
@@ -135,19 +162,19 @@
       width: calc(100% - 80px);
       max-width: 1360px;
       height: calc(100% - 130px);
-      max-height: 800px;
+      max-height: 810px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 35px 45px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.05);
-      backdrop-filter: blur(16px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 35px rgba(56, 189, 248, 0.08);
+      backdrop-filter: blur(18px);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(20px) scale(0.98);
-      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+      transform: translateY(24px) scale(0.97);
+      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.45s ease;
       overflow-y: auto;
     }
 
@@ -155,6 +182,43 @@
       opacity: 1;
       visibility: visible;
       transform: translateY(0) scale(1);
+    }
+
+    /* Staggered entrance animations for slide contents */
+    .slide.active .slide-tag {
+      animation: fadeInDown 0.35s ease 0.05s both;
+    }
+    .slide.active .slide-title {
+      animation: fadeInDown 0.4s ease 0.1s both;
+    }
+    .slide.active .info-card {
+      animation: fadeInUp 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) 0.18s both;
+    }
+    .slide.active .img-preview-card {
+      animation: zoomIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+    }
+    .slide.active .metric-box {
+      animation: popIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.2) 0.22s both;
+    }
+    .slide.active .math-display-card {
+      animation: fadeInUp 0.5s ease 0.22s both;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .slide::-webkit-scrollbar {
@@ -183,7 +247,12 @@
       height: 8px;
       background: var(--primary);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
     }
 
     .slide-title {
@@ -191,7 +260,7 @@
       font-weight: 800;
       letter-spacing: -0.5px;
       color: #ffffff;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       line-height: 1.25;
     }
 
@@ -205,20 +274,20 @@
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 26px;
+      gap: 24px;
       flex: 1;
       align-items: center;
     }
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
       flex: 1;
     }
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 14px;
       flex: 1;
     }
 
@@ -226,14 +295,15 @@
     .info-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 18px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .info-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.45);
       background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
     .info-card h3 {
       font-size: 1.05rem;
@@ -265,13 +335,19 @@
       font-weight: bold;
     }
 
-    /* Metrics & Formulas */
+    /* Metrics Box */
     .metric-box {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(129, 140, 248, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(129, 140, 248, 0.06) 100%);
       border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 12px;
       padding: 16px;
       text-align: center;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .metric-box:hover {
+      transform: translateY(-3px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
     }
     .metric-value {
       font-size: 2.1rem;
@@ -287,18 +363,101 @@
       letter-spacing: 0.5px;
     }
 
-    .formula-box {
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-family: 'Consolas', 'Courier New', monospace;
-      font-size: 0.88rem;
-      color: #38bdf8;
-      margin: 10px 0;
-      display: block;
-      text-align: center;
+    /* ============================================================== */
+    /* ENHANCED MATHEMATICAL EQUATION BOXES (DEEP VISUAL BREAKDOWN)   */
+    /* ============================================================== */
+    .math-display-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
+    .math-equation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 14px;
+      background: rgba(7, 11, 20, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      font-size: 1.15rem;
+      font-family: 'Cambria Math', 'Times New Roman', serif;
+      color: #ffffff;
+    }
+    .math-term {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .math-term:hover {
+      transform: scale(1.05);
+    }
+    .term-obj {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+    .term-loss {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+    .term-gamma {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+    }
+    .term-l2 {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+    }
+    .term-l1 {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #c084fc;
+    }
+    .math-op {
+      font-weight: bold;
+      color: #94a3b8;
+      font-size: 1.25rem;
+    }
+    .math-sigma {
+      font-size: 1.35rem;
+      font-weight: bold;
+    }
+
+    .math-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 14px;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
+    .mb-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-loss { background: #ef4444; }
+    .dot-gamma { background: #f59e0b; }
+    .dot-l2 { background: #10b981; }
+    .dot-l1 { background: #a855f7; }
 
     /* Presentation Table */
     .pres-table {
@@ -321,7 +480,7 @@
       letter-spacing: 0.5px;
     }
     .pres-table tr:hover {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     /* Image Preview Container */
@@ -342,7 +501,8 @@
     }
     .img-preview-card:hover {
       border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+      transform: translateY(-2px);
     }
     .img-preview-card img {
       width: 100%;
@@ -350,19 +510,19 @@
       max-height: 480px;
       object-fit: contain;
       display: block;
-      transition: transform 0.3s ease;
+      transition: transform 0.35s ease;
     }
     .img-preview-card:hover img {
-      transform: scale(1.02);
+      transform: scale(1.025);
     }
     .img-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(15, 23, 42, 0.9);
-      padding: 6px 12px;
-      font-size: 0.75rem;
+      background: rgba(15, 23, 42, 0.92);
+      padding: 6px 14px;
+      font-size: 0.78rem;
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
@@ -379,17 +539,18 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(10px);
       align-items: center;
       justify-content: center;
       padding: 30px;
+      animation: fadeIn 0.25s ease;
     }
     .lightbox-modal img {
       max-width: 95vw;
       max-height: 90vh;
       border-radius: 12px;
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 50px rgba(56, 189, 248, 0.45);
       border: 1px solid rgba(56, 189, 248, 0.5);
     }
     .lightbox-close {
@@ -397,12 +558,13 @@
       top: 20px;
       right: 30px;
       color: #ffffff;
-      font-size: 36px;
+      font-size: 38px;
       cursor: pointer;
-      transition: color 0.2s;
+      transition: color 0.2s, transform 0.2s;
     }
     .lightbox-close:hover {
       color: var(--primary);
+      transform: scale(1.1);
     }
 
     /* Title Slide Specifics */
@@ -413,16 +575,17 @@
     }
     .title-banner {
       display: inline-block;
-      padding: 6px 18px;
+      padding: 6px 20px;
       border-radius: 30px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.4);
       color: var(--primary);
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 2px;
       margin-bottom: 16px;
       text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     }
     .main-hero-title {
       font-size: 2.35rem;
@@ -440,18 +603,19 @@
     .title-desc {
       font-size: 1.05rem;
       color: #94a3b8;
-      max-width: 850px;
+      max-width: 860px;
       line-height: 1.6;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
     .authors-card {
       display: flex;
       align-items: center;
       gap: 30px;
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 14px 28px;
       border-radius: 16px;
+      backdrop-filter: blur(10px);
     }
     .author-item {
       text-align: left;
@@ -479,39 +643,40 @@
       align-items: center;
       gap: 16px;
       z-index: 100;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 8px 20px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 22px;
       border-radius: 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
     .nav-btn {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #ffffff;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 14px;
+      transition: all 0.25s ease;
+      font-size: 15px;
     }
     .nav-btn:hover {
       background: var(--primary);
       color: #070b14;
       border-color: var(--primary);
-      transform: scale(1.08);
+      transform: scale(1.1);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
     }
     .slide-counter {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 700;
       font-family: 'Consolas', monospace;
       color: #e2e8f0;
-      min-width: 70px;
+      min-width: 75px;
       text-align: center;
     }
     .fullscreen-btn {
@@ -519,26 +684,27 @@
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 8px;
+      padding: 5px 10px;
       border-radius: 6px;
-      transition: color 0.2s;
+      transition: color 0.2s, background 0.2s;
     }
     .fullscreen-btn:hover {
       color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Glow -->
+  <!-- Ambient Glow Background -->
   <div class="ambient-glow"></div>
   <div class="ambient-glow-2"></div>
 
-  <!-- Progress Bar -->
+  <!-- Progress Bar with Glow -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
   </div>
@@ -581,14 +747,14 @@
       </div>
 
       <div style="margin-top: 25px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <span class="badge-topic" style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">TCGA-BRCA Cohort (569)</span>
+        <span class="badge-topic" style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">TCGA-BRCA Kohorta (569)</span>
         <span class="badge-topic" style="border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">XGBoost (AUC: 1.000)</span>
-        <span class="badge-topic" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">Welch DEG & PCA</span>
-        <span class="badge-topic" style="border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">Interactive GUI & Web</span>
+        <span class="badge-topic" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">Welch DEG & PCA 2D</span>
+        <span class="badge-topic" style="border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">Desktop GUI & Web Dashboard</span>
       </div>
 
       <p style="margin-top: 25px; font-size: 0.8rem; color: #64748b;">
-        Toshkent — 2026 | Boshqarish uchun <strong>[←]</strong> va <strong>[→]</strong> tugmalaridan foydalaning
+        Toshkent — 2026 | Slaydlarni boshqarish: <strong>[←]</strong> va <strong>[→]</strong> tugmalari
       </p>
     </section>
 
@@ -650,34 +816,47 @@
             <p>
               Biologik ma'lumotlarda o'lchanadigan genlar soni (<strong>$p > 20,000$</strong>) mavjud bemor namunalar sonidan (<strong>$n \sim 500$</strong>) 
               o'nlab barobar katta bo'ladi ($p \gg n$). 
-              Bunday fazoda oddiy statistik modellar (chiziqli regressiya, OLS) haddan tashqari moslashib (Overfitting), yolg'on korrelyatsiyalar hosil qiladi.
+              Bunday fazoda oddiy statistik modellar (chiziqli regressiya) haddan tashqari moslashib (Overfitting), yolg'on korrelyatsiyalar hosil qiladi.
             </p>
           </div>
 
           <div class="info-card">
             <h3>⚡ Multikollinearlik va Fon Shovqini</h3>
             <p>
-              Genlar o'zaro murakkab gen-regulyator tarmoqlarida bog'langan bo'lib, o'zaro kuchli chiziqli bog'liqlik (multikollinearlik) va yuqori fon shovqiniga ega. 
-              Haqiqiy drayver onkogenlarni passiv "yo'lovchi" genlardan ajratib olish zarur.
+              Genlar o'zaro murakkab tarmoqlarda bog'langan bo'lib, kuchli multikollinearlikka ega. 
+              Haqiqiy kasallik qo'zg'atuvchi drayver genlarni passiv "yo'lovchi" genlardan ajratib olish lozim.
             </p>
           </div>
         </div>
 
         <div>
-          <div class="info-card" style="border-left: 4px solid var(--accent-green); margin-bottom: 16px;">
-            <h3 style="color: #10b981;">💡 Yechim: XGBoost Regulyarizatsiyalangan Ob'ektiv Funksiyasi</h3>
-            <p>
-              Gradientli kuchaytirish (XGBoost) algoritmi daraxtlar chuqurligi va barg vaznlariga $L_1$ (Lasso) hamda $L_2$ (Ridge) jazo regulyarizatsiyasini kiritadi:
-            </p>
-            <div class="formula-box">
-              $\mathcal{L}^{(t)} = \sum_{i=1}^n l(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)) + \gamma T + \frac{1}{2}\lambda \sum_{j=1}^T w_j^2 + \alpha \sum_{j=1}^T |w_j|$
+          <!-- Visually Clear, Color-Coded XGBoost Formula -->
+          <div class="math-display-card">
+            <div style="font-size: 0.85rem; font-weight: 700; color: #38bdf8; margin-bottom: 8px; text-transform: uppercase;">
+              💡 XGBoost Regulyarizatsiyalangan Ob'ektiv Funksiyasi:
             </div>
-            <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 6px;">
-              Bu formula ortiqcha shovqinli genlarni avtomatik nolga tenglashtirib, faqat haqiqiy diagnostik biomarkerlarni saralab oladi.
-            </p>
+            
+            <div class="math-equation">
+              <span class="math-term term-obj"><b>Obj</b><sup>(t)</sup></span>
+              <span class="math-op">=</span>
+              <span class="math-term term-loss"><span class="math-sigma">&sum;</span> <i>l</i>(<i>y</i><sub>i</sub>, <i>ŷ</i><sub>i</sub><sup>(t-1)</sup> + <i>f</i><sub>t</sub>(<i>x</i><sub>i</sub>))</span>
+              <span class="math-op">+</span>
+              <span class="math-term term-gamma">&gamma;<i>T</i></span>
+              <span class="math-op">+</span>
+              <span class="math-term term-l2">&frac12;&lambda; <span class="math-sigma">&sum;</span> <i>w</i><sub>j</sub><sup>2</sup></span>
+              <span class="math-op">+</span>
+              <span class="math-term term-l1">&alpha; <span class="math-sigma">&sum;</span> |<i>w</i><sub>j</sub>|</span>
+            </div>
+
+            <div class="math-breakdown">
+              <div class="mb-item"><span class="color-dot dot-loss"></span><b>Yo'qotish funksiyasi:</b> Haqiqiy va bashorat xatosi</div>
+              <div class="mb-item"><span class="color-dot dot-gamma"></span><b>&gamma;<i>T</i>:</b> Daraxt barglari soniga jazo (Complexity)</div>
+              <div class="mb-item"><span class="color-dot dot-l2"></span><b><i>L</i><sub>2</sub> (Ridge):</b> Barg vaznlari kvadratiga jazo (Overfittingni to'xtatadi)</div>
+              <div class="mb-item"><span class="color-dot dot-l1"></span><b><i>L</i><sub>1</sub> (Lasso):</b> Shovqinli genlar ta'sirini to'liq <b>nolga</b> tenglashtiradi</div>
+            </div>
           </div>
 
-          <div class="metric-box">
+          <div class="metric-box" style="margin-top: 10px;">
             <div class="metric-value">20,000 → 200 → 5</div>
             <div class="metric-label">Genomik Fazo Qisqarishi: Butun Genomdan Top Diagnostik Biomarkerlargacha</div>
           </div>
@@ -692,7 +871,7 @@
       <div class="slide-tag">03 • Maqsad va Vazifalar</div>
       <h2 class="slide-title">Tadqiqotning <span>Bosh Maqsadi va Ilmiy Vazifalari</span></h2>
 
-      <div class="info-card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+      <div class="info-card" style="margin-bottom: 18px; border-left: 4px solid var(--primary);">
         <h3 style="font-size: 1.2rem;">🎯 Bosh Ilmiy Maqsad:</h3>
         <p style="font-size: 1.05rem;">
           Inson onkologik kasalliklarining xalqaro ochiq transkriptomik ma'lumotlari (TCGA-BRCA va NCBI GEO) asosida 
@@ -744,7 +923,7 @@
       <div class="slide-tag">04 • Arxitektura</div>
       <h2 class="slide-title">Tavsiya Etilgan <span>7 Bosqichli Ishchi Zanjir</span></h2>
 
-      <div class="info-card" style="margin-bottom: 20px; padding: 18px 24px;">
+      <div class="info-card" style="margin-bottom: 18px; padding: 14px 24px;">
         <p style="font-size: 0.95rem; color: #cbd5e1; text-align: center;">
           Bioinformatika fani bo'yicha tavsiya etilgan to'liq standart jarayon loyihada to'liq avtomatlashtirilgan:
         </p>
@@ -800,7 +979,7 @@
         </div>
       </div>
 
-      <div class="grid-2" style="margin-top: 20px;">
+      <div class="grid-2" style="margin-top: 18px;">
         <div class="info-card">
           <h3>⚡ To'liq Avtomatlashuv (`run_full_pipeline.py`)</h3>
           <p>Yagona master skript orqali 14 soniyada butun tahlil noldan boshlab yakunlanadi.</p>
@@ -819,7 +998,7 @@
       <div class="slide-tag">05 • Biologik Ma'lumotlar</div>
       <h2 class="slide-title">TCGA-BRCA va NCBI GEO <span>Ochiq Klinik Kohortasi</span></h2>
 
-      <div class="grid-4" style="margin-bottom: 20px;">
+      <div class="grid-4" style="margin-bottom: 18px;">
         <div class="metric-box">
           <div class="metric-value">569</div>
           <div class="metric-label">Jami Bemor Namunasi</div>
@@ -887,7 +1066,7 @@
       <div class="slide-tag">06 • Preprocessing</div>
       <h2 class="slide-title">Ma'lumotlarni Dastlabki Qayta Ishlash <span>(Preprocessing Matematikasi)</span></h2>
 
-      <div class="grid-3" style="margin-bottom: 20px;">
+      <div class="grid-3" style="margin-bottom: 18px;">
         <div class="info-card">
           <h3>1. Sifat Nazorati (QC)</h3>
           <p>
@@ -898,17 +1077,25 @@
         <div class="info-card">
           <h3>2. Dispersiyali Filtrlash</h3>
           <p>
-            Namunalar bo'ylab deyarli o'zgarmaydigan past dispersiyali genlar olib tashlandi:
-            <span class="formula-box">$\sigma^2(g) < 0.1 \implies \text{Drop}$</span>
+            Namunalar bo'ylab deyarli o'zgarmaydigan passiv genlar olib tashlandi:
           </p>
+          <div class="math-display-card" style="padding: 8px 12px; margin: 6px 0;">
+            <div style="font-size: 0.95rem; font-weight: 700; color: #38bdf8; text-align: center;">
+              &sigma;<sup>2</sup>(<i>g</i>) &lt; 0.10 &implies; Chiqarib tashlash
+            </div>
+          </div>
         </div>
 
         <div class="info-card">
           <h3>3. Z-Score Standartlashtirish</h3>
           <p>
-            Turli platformalar o'rtasidagi miqyos farqini yo'qotish uchun har bir gen Z-score ko'rinishiga keltirildi:
-            <span class="formula-box">$Z = \frac{x - \mu}{\sigma} \sim \mathcal{N}(0, 1)$</span>
+            Turli platformalar o'rtasidagi miqyos farqini yo'qotish formulasi:
           </p>
+          <div class="math-display-card" style="padding: 8px 12px; margin: 6px 0;">
+            <div style="font-size: 1.05rem; font-weight: 700; color: #10b981; text-align: center;">
+              <i>Z</i> = (<i>x</i> - &mu;) / &sigma; &sim; <i>N</i>(0, 1)
+            </div>
+          </div>
         </div>
       </div>
 
@@ -984,13 +1171,15 @@
         </div>
 
         <div>
-          <div class="info-card" style="margin-bottom: 14px;">
-            <h3>📐 Statistik Filtrlash Shartlari:</h3>
-            <p>
-              Genlarning kasallikdagi ahamiyati ikki asosiy mezon bo'yicha saralandi:
-              <br>1) <strong>Biologik miqyos:</strong> $|\log_2\text{Fold Change}| \ge 1.0$ (2 barobar farq);
-              <br>2) <strong>Statistik ishonchlilik:</strong> Welch t-test $p$-qiymatiga Benjamini-Hochberg FDR tuzatmasi: 
-              <span class="formula-box">$q = p \cdot \frac{m}{k} < 0.05 \implies -\log_{10}(q) > 1.30$</span>
+          <div class="info-card" style="margin-bottom: 12px;">
+            <h3>📐 Benjamini-Hochberg FDR Korreksiyasi:</h3>
+            <div class="math-display-card" style="padding: 10px 14px; margin: 6px 0;">
+              <div style="font-size: 1.05rem; font-weight: 700; color: #38bdf8; text-align: center;">
+                <i>q</i><sub>i</sub> = <i>p</i><sub>(i)</sub> &times; (<i>m</i> / <i>i</i>) &le; 0.05 &implies; &minus;log<sub>10</sub>(<i>q</i>) &gt; 1.30
+              </div>
+            </div>
+            <p style="font-size: 0.82rem; color: #94a3b8;">
+              Welch t-test $p$-qiymatlariga ko'p martalik tekshiruv xatosi (False Discovery Rate) tuzatmasi kiritildi.
             </p>
           </div>
 
@@ -1248,10 +1437,14 @@
             </ul>
           </div>
 
-          <div class="info-card">
-            <p style="font-size: 0.82rem; color: #94a3b8;">
-              Ushbu 5 ta biomarker modelning umumiy bashorat kuchining <strong>78.3 foizini</strong> tashkil qiladi.
-            </p>
+          <!-- Gain Formula breakdown -->
+          <div class="math-display-card" style="padding: 10px 14px;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">
+              Daraxt Bo'linishidagi Axborot Yutug'i (Gain):
+            </div>
+            <div style="font-size: 0.92rem; font-family: 'Cambria Math', serif; color: #e2e8f0; text-align: center;">
+              Gain = &frac12; [ <i>G</i><sub>L</sub><sup>2</sup>/(<i>H</i><sub>L</sub>+&lambda;) + <i>G</i><sub>R</sub><sup>2</sup>/(<i>H</i><sub>R</sub>+&lambda;) &minus; (<i>G</i><sub>L</sub>+<i>G</i><sub>R</sub>)<sup>2</sup>/(<i>H</i><sub>L</sub>+<i>H</i><sub>R</sub>+&lambda;) ] &minus; &gamma;
+            </div>
           </div>
         </div>
       </div>
@@ -1535,8 +1728,23 @@
       modal.style.display = 'none';
     }
 
-    // Initialize first slide
-    showSlide(1);
+    // Auto-render KaTeX if available
+    window.addEventListener('DOMContentLoaded', () => {
+      showSlide(1);
+      if (window.renderMathInElement) {
+        try {
+          renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false}
+            ],
+            throwOnError: false
+          });
+        } catch (e) {
+          console.log("KaTeX auto-render skipped:", e);
+        }
+      }
+    });
   </script>
 </body>
 </html>
