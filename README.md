@@ -18,7 +18,7 @@ bioinformatika_loyiha_13/
 ├── app_web.py                              # Veb-Dastur Serveri (Python local web server)
 ├── app_demo.py                             # Konsol Diagnostik Demo Dasturi (CLI)
 ├── start_prezentatsiya.bat                 # Prezentatsiyani ochish skripti
-├── prezentatsiya.html                      # 14 Slaydli Rasmiy Ilmiy Prezentatsiya (HTML/CSS/JS)
+├── prezentatsiya.html                      # 21 Slaydli Rasmiy Ilmiy Prezentatsiya (HTML/CSS/JS)
 ├── run_full_pipeline.py                    # To'liq avtomatlashtirilgan ilmiy pipeline
 ├── KURS_LOYIHASI_HISOBOTI.docx             # Rasmiy Ilmiy Kurs Loyihasi Hisoboti (Word, 122 paragraf)
 ├── data/
@@ -56,6 +56,23 @@ bioinformatika_loyiha_13/
 
 ---
 
+## 📥 Loyihani GitHub'dan Olish va O'rnatish
+
+```bash
+# 1. Repozitoriyni klonlash
+git clone https://github.com/elmurodsobirov/bioinformatikaLoyiha.git
+cd bioinformatikaLoyiha
+
+# 2. Virtual muhit yaratish va faollashtirish (tavsiya etiladi)
+python -m venv venv
+.\venv\Scripts\activate   # Linux/macOS uchun: source venv/bin/activate
+
+# 3. Talab qilinadigan kutubxonalarni o'rnatish
+pip install -r requirements.txt
+```
+
+---
+
 ## 🚀 Dasturlarni Ishga Tushirish Usullari
 
 ### 🌟 1-Usul: Yagona universal boshqaruv paneli (Tavsiya etiladi)
@@ -63,7 +80,7 @@ Loyiha papkasidagi [`dastur_ishga_tushirish.bat`](start_prezentatsiya.bat) fayli
 - `[1]` Desktop Dastur (Tkinter grafik oynasi)
 - `[2]` Veb-Dashboard Dasturi (Brauzerda ochish)
 - `[3]` Konsol Diagnostik Demo (CLI orqali tekshirish)
-- `[4]` 14 Slaydli Prezentatsiya
+- `[4]` 21 Slaydli Prezentatsiya
 - `[5]` To'liq Ilmiy Pipelineni qayta hisoblash
 
 ### 💻 2-Usul: Desktop GUI Dasturi (Tkinter)

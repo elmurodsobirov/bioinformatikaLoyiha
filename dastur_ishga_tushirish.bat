@@ -15,7 +15,7 @@ echo.
 echo    [1] Desktop Dastur (Zamonaviy Tkinter Grafik Interfeys)
 echo    [2] Veb-Dashboard Dasturi (Brauzerda Interaktiv Diagnostika)
 echo    [3] Konsol Diagnostik Demo (CLI orqali bemorlarni tekshirish)
-echo    [4] 14 Slaydli Rasmiy Prezentatsiya (HTML/CSS/JS)
+echo    [4] 21 Slaydli Rasmiy Ilmiy Prezentatsiya (HTML/CSS/JS)
 echo    [5] To'liq Ilmiy Pipeline (Ma'lumotlar + O'qitish + Grafiklar)
 echo    [0] Chiqish
 echo.
@@ -60,7 +60,7 @@ goto MENU
 
 :PRES
 cls
-echo [*] 14 slaydli prezentatsiya ochilmoqda...
+echo [*] 21 slaydli prezentatsiya ochilmoqda...
 cd /d "%~dp0"
 start "" "%~dp0prezentatsiya.html"
 goto MENU

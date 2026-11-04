@@ -93,7 +93,7 @@
     }
     .progress-bar {
       height: 100%;
-      width: 5.5%;
+      width: 4.7%;
       background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
       background-size: 200% 100%;
       transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -120,32 +120,24 @@
       letter-spacing: 0.5px;
     }
     .badge-topic {
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       color: var(--primary);
       padding: 4px 14px;
       border-radius: 20px;
       font-weight: 600;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
-    }
-    .header-authors {
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.04);
-      padding: 4px 16px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
+      gap: 6px;
+    }
+    .header-authors span {
+      color: #64748b;
     }
     .header-authors strong {
-      color: #38bdf8;
+      color: #cbd5e1;
     }
 
-    /* Slide Deck Container */
+    /* Presentation Slides Viewport */
     .presentation-container {
       position: relative;
       width: 100%;
@@ -162,11 +154,11 @@
       width: calc(100% - 80px);
       max-width: 1360px;
       height: calc(100% - 130px);
-      max-height: 810px;
+      max-height: 820px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 22px;
-      padding: 35px 45px;
+      padding: 32px 42px;
       display: flex;
       flex-direction: column;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 35px rgba(56, 189, 248, 0.08);
@@ -184,7 +176,7 @@
       transform: translateY(0) scale(1);
     }
 
-    /* Staggered entrance animations for slide contents */
+    /* Entrance animations for slide contents */
     .slide.active .slide-tag {
       animation: fadeInDown 0.35s ease 0.05s both;
     }
@@ -200,7 +192,7 @@
     .slide.active .metric-box {
       animation: popIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.2) 0.22s both;
     }
-    .slide.active .math-display-card {
+    .slide.active .math-display-card, .slide.active .code-terminal {
       animation: fadeInUp 0.5s ease 0.22s both;
     }
 
@@ -256,11 +248,11 @@
     }
 
     .slide-title {
-      font-size: 1.85rem;
+      font-size: 1.82rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: #ffffff;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       line-height: 1.25;
     }
 
@@ -274,14 +266,14 @@
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 20px;
       flex: 1;
       align-items: center;
     }
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 15px;
       flex: 1;
     }
     .grid-4 {
@@ -296,7 +288,7 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 14px;
-      padding: 18px;
+      padding: 16px 18px;
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .info-card:hover {
@@ -306,16 +298,16 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
     .info-card h3 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #38bdf8;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .info-card p, .info-card li {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #cbd5e1;
       line-height: 1.55;
     }
@@ -340,7 +332,7 @@
       background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(129, 140, 248, 0.06) 100%);
       border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px 16px;
       text-align: center;
       transition: transform 0.25s ease, border-color 0.25s ease;
     }
@@ -350,28 +342,26 @@
       box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
     }
     .metric-value {
-      font-size: 2.1rem;
+      font-size: 2rem;
       font-weight: 800;
       color: #38bdf8;
       line-height: 1.1;
     }
     .metric-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
       margin-top: 4px;
       letter-spacing: 0.5px;
     }
 
-    /* ============================================================== */
-    /* ENHANCED MATHEMATICAL EQUATION BOXES (DEEP VISUAL BREAKDOWN)   */
-    /* ============================================================== */
+    /* Mathematical Equation Boxes */
     .math-display-card {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
       border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 14px;
-      padding: 16px 20px;
-      margin: 12px 0;
+      padding: 14px 18px;
+      margin: 10px 0;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
     }
     .math-equation {
@@ -380,11 +370,11 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 8px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       background: rgba(7, 11, 20, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 10px;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-family: 'Cambria Math', 'Times New Roman', serif;
       color: #ffffff;
     }
@@ -396,9 +386,6 @@
       align-items: center;
       gap: 4px;
       transition: all 0.2s;
-    }
-    .math-term:hover {
-      transform: scale(1.05);
     }
     .term-obj {
       background: rgba(56, 189, 248, 0.15);
@@ -428,10 +415,10 @@
     .math-op {
       font-weight: bold;
       color: #94a3b8;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
     .math-sigma {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: bold;
     }
 
@@ -439,8 +426,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px 14px;
-      margin-top: 12px;
-      font-size: 0.8rem;
+      margin-top: 10px;
+      font-size: 0.78rem;
       color: #cbd5e1;
     }
     .mb-item {
@@ -459,15 +446,101 @@
     .dot-l2 { background: #10b981; }
     .dot-l1 { background: #a855f7; }
 
+    /* ============================================================== */
+    /* TERMINAL & COMMAND CODE BLOCKS (GITHUB & RUNTIME)              */
+    /* ============================================================== */
+    .code-terminal {
+      background: #090e17;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 12px;
+    }
+    .terminal-bar {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 7px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+    .terminal-title {
+      font-size: 0.76rem;
+      font-family: 'Consolas', monospace;
+      color: #94a3b8;
+    }
+    .copy-btn {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: #38bdf8;
+      color: #070b14;
+    }
+    .terminal-body {
+      padding: 12px 16px;
+      font-family: 'Consolas', 'Fira Code', monospace;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+    .cmd-line {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+    .cmd-prompt {
+      color: #38bdf8;
+      user-select: none;
+      font-weight: 700;
+    }
+    .cmd-text {
+      color: #f8fafc;
+      word-break: break-all;
+    }
+    .cmd-comment {
+      color: #64748b;
+      font-style: italic;
+    }
+    .cmd-output {
+      color: #94a3b8;
+      padding-left: 20px;
+      font-size: 0.78rem;
+    }
+    .cmd-success {
+      color: #34d399;
+    }
+
     /* Presentation Table */
     .pres-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       margin-top: 8px;
     }
     .pres-table th, .pres-table td {
-      padding: 10px 12px;
+      padding: 9px 12px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       text-align: left;
     }
@@ -476,7 +549,7 @@
       color: var(--primary);
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       letter-spacing: 0.5px;
     }
     .pres-table tr:hover {
@@ -513,7 +586,7 @@
       transition: transform 0.35s ease;
     }
     .img-preview-card:hover img {
-      transform: scale(1.025);
+      transform: scale(1.02);
     }
     .img-caption {
       position: absolute;
@@ -530,7 +603,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* Modal / Lightbox */
+    /* Lightbox Modal */
     .lightbox-modal {
       display: none;
       position: fixed;
@@ -588,7 +661,7 @@
       box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     }
     .main-hero-title {
-      font-size: 2.35rem;
+      font-size: 2.3rem;
       font-weight: 800;
       line-height: 1.25;
       max-width: 1100px;
@@ -601,11 +674,11 @@
       -webkit-text-fill-color: transparent;
     }
     .title-desc {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: #94a3b8;
       max-width: 860px;
       line-height: 1.6;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
     .authors-card {
       display: flex;
@@ -746,15 +819,16 @@
         </div>
       </div>
 
-      <div style="margin-top: 25px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <span class="badge-topic" style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">TCGA-BRCA Kohorta (569)</span>
+      <div style="margin-top: 22px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <span class="badge-topic" style="border-color: rgba(56, 189, 248, 0.5); color: #38bdf8;">GitHub: elmurodsobirov/bioinformatikaLoyiha</span>
+        <span class="badge-topic" style="border-color: rgba(16, 185, 129, 0.4); color: #10b981;">TCGA-BRCA Kohorta (569 bemor)</span>
         <span class="badge-topic" style="border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">XGBoost (AUC: 1.000)</span>
         <span class="badge-topic" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">Welch DEG & PCA 2D</span>
         <span class="badge-topic" style="border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">Desktop GUI & Web Dashboard</span>
       </div>
 
-      <p style="margin-top: 25px; font-size: 0.8rem; color: #64748b;">
-        Toshkent — 2026 | Slaydlarni boshqarish: <strong>[←]</strong> va <strong>[→]</strong> tugmalari
+      <p style="margin-top: 20px; font-size: 0.8rem; color: #64748b;">
+        Toshkent — 2026 | Boshqaruv: <strong>[←]</strong> va <strong>[→]</strong> tugmalari | To'liq ekran: <strong>[F]</strong>
       </p>
     </section>
 
@@ -816,7 +890,7 @@
             <p>
               Biologik ma'lumotlarda o'lchanadigan genlar soni (<strong>$p > 20,000$</strong>) mavjud bemor namunalar sonidan (<strong>$n \sim 500$</strong>) 
               o'nlab barobar katta bo'ladi ($p \gg n$). 
-              Bunday fazoda oddiy statistik modellar (chiziqli regressiya) haddan tashqari moslashib (Overfitting), yolg'on korrelyatsiyalar hosil qiladi.
+              Bunday fazoda oddiy statistik modellar haddan tashqari moslashib (Overfitting), yolg'on korrelyatsiyalar hosil qiladi.
             </p>
           </div>
 
@@ -872,8 +946,8 @@
       <h2 class="slide-title">Tadqiqotning <span>Bosh Maqsadi va Ilmiy Vazifalari</span></h2>
 
       <div class="info-card" style="margin-bottom: 18px; border-left: 4px solid var(--primary);">
-        <h3 style="font-size: 1.2rem;">🎯 Bosh Ilmiy Maqsad:</h3>
-        <p style="font-size: 1.05rem;">
+        <h3 style="font-size: 1.15rem;">🎯 Bosh Ilmiy Maqsad:</h3>
+        <p style="font-size: 1rem;">
           Inson onkologik kasalliklarining xalqaro ochiq transkriptomik ma'lumotlari (TCGA-BRCA va NCBI GEO) asosida 
           kasallikni erta bosqichda <strong>99%+ aniqlikda bashoratlovchi</strong>, asosiy biomarker genlarni aniqlovchi hamda 
           shaxsiylashtirilgan maqsadli terapiyani tavsiya etuvchi to'liq avtomatlashgan dasturiy majmua yaratish.
@@ -923,82 +997,167 @@
       <div class="slide-tag">04 • Arxitektura</div>
       <h2 class="slide-title">Tavsiya Etilgan <span>7 Bosqichli Ishchi Zanjir</span></h2>
 
-      <div class="info-card" style="margin-bottom: 18px; padding: 14px 24px;">
-        <p style="font-size: 0.95rem; color: #cbd5e1; text-align: center;">
-          Bioinformatika fani bo'yicha tavsiya etilgan to'liq standart jarayon loyihada to'liq avtomatlashtirilgan:
+      <div class="info-card" style="margin-bottom: 16px; padding: 12px 20px;">
+        <p style="font-size: 0.92rem; color: #cbd5e1; text-align: center;">
+          Bioinformatika fani standarti bo'yicha to'liq ilmiy zanjir <code>run_full_pipeline.py</code> skriptida to'liq avtomatlashtirilgan:
         </p>
       </div>
 
       <div style="display: flex; justify-content: space-between; align-items: stretch; gap: 8px; flex: 1; flex-wrap: wrap;">
         <div class="metric-box" style="flex: 1; min-width: 140px; padding: 12px;">
-          <div style="font-size: 1.5rem;">📁</div>
-          <div style="font-weight: 700; color: #38bdf8; font-size: 0.85rem; margin-top: 4px;">1. Dataset</div>
+          <div style="font-size: 1.4rem;">📁</div>
+          <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-top: 4px;">1. Dataset</div>
           <div style="font-size: 0.72rem; color: #94a3b8;">TCGA va GEO kohortasi</div>
         </div>
         <div style="display: flex; align-items: center; color: var(--primary);">➔</div>
 
         <div class="metric-box" style="flex: 1; min-width: 140px; padding: 12px;">
-          <div style="font-size: 1.5rem;">🧹</div>
-          <div style="font-weight: 700; color: #38bdf8; font-size: 0.85rem; margin-top: 4px;">2. Preprocessing</div>
+          <div style="font-size: 1.4rem;">🧹</div>
+          <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-top: 4px;">2. Preprocessing</div>
           <div style="font-size: 0.72rem; color: #94a3b8;">QC, Variance, Z-Score</div>
         </div>
         <div style="display: flex; align-items: center; color: var(--primary);">➔</div>
 
         <div class="metric-box" style="flex: 1; min-width: 140px; padding: 12px;">
-          <div style="font-size: 1.5rem;">🧬</div>
-          <div style="font-weight: 700; color: #38bdf8; font-size: 0.85rem; margin-top: 4px;">3. Bio-Algoritm</div>
+          <div style="font-size: 1.4rem;">🧬</div>
+          <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-top: 4px;">3. Bio-Algoritm</div>
           <div style="font-size: 0.72rem; color: #94a3b8;">Welch DEG va PCA 2D</div>
         </div>
         <div style="display: flex; align-items: center; color: var(--primary);">➔</div>
 
         <div class="metric-box" style="flex: 1; min-width: 140px; padding: 12px;">
-          <div style="font-size: 1.5rem;">🤖</div>
-          <div style="font-weight: 700; color: #38bdf8; font-size: 0.85rem; margin-top: 4px;">4. ML Model</div>
+          <div style="font-size: 1.4rem;">🤖</div>
+          <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-top: 4px;">4. ML Model</div>
           <div style="font-size: 0.72rem; color: #94a3b8;">XGBoost, RF, SVM, LR</div>
         </div>
         <div style="display: flex; align-items: center; color: var(--primary);">➔</div>
 
         <div class="metric-box" style="flex: 1; min-width: 140px; padding: 12px;">
-          <div style="font-size: 1.5rem;">📊</div>
-          <div style="font-weight: 700; color: #38bdf8; font-size: 0.85rem; margin-top: 4px;">5. Vizualizatsiya</div>
+          <div style="font-size: 1.4rem;">📊</div>
+          <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-top: 4px;">5. Vizualizatsiya</div>
           <div style="font-size: 0.72rem; color: #94a3b8;">7 ta 300 DPI grafik</div>
         </div>
         <div style="display: flex; align-items: center; color: var(--primary);">➔</div>
 
         <div class="metric-box" style="flex: 1; min-width: 140px; padding: 12px;">
-          <div style="font-size: 1.5rem;">💊</div>
-          <div style="font-weight: 700; color: #38bdf8; font-size: 0.85rem; margin-top: 4px;">6. Interpretatsiya</div>
+          <div style="font-size: 1.4rem;">💊</div>
+          <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-top: 4px;">6. Interpretatsiya</div>
           <div style="font-size: 0.72rem; color: #94a3b8;">Hallmarks & Dorilar</div>
         </div>
         <div style="display: flex; align-items: center; color: var(--primary);">➔</div>
 
         <div class="metric-box" style="flex: 1; min-width: 140px; padding: 12px; border-color: #10b981;">
-          <div style="font-size: 1.5rem;">💻</div>
-          <div style="font-weight: 700; color: #10b981; font-size: 0.85rem; margin-top: 4px;">7. Dastur (App)</div>
+          <div style="font-size: 1.4rem;">💻</div>
+          <div style="font-weight: 700; color: #10b981; font-size: 0.82rem; margin-top: 4px;">7. Dastur (App)</div>
           <div style="font-size: 0.72rem; color: #94a3b8;">Desktop GUI & Web</div>
         </div>
       </div>
 
-      <div class="grid-2" style="margin-top: 18px;">
+      <div class="grid-2" style="margin-top: 16px;">
         <div class="info-card">
           <h3>⚡ To'liq Avtomatlashuv (`run_full_pipeline.py`)</h3>
-          <p>Yagona master skript orqali 14 soniyada butun tahlil noldan boshlab yakunlanadi.</p>
+          <p>Yagona master skript orqali 12 soniyada butun ilmiy tahlil noldan boshlab yakunlanadi.</p>
         </div>
         <div class="info-card">
           <h3>🔒 Biotibbiy Xavfsizlik (HIPAA / GDPR)</h3>
-          <p>Barcha klinik identifikatorlar anonimlashtirilgan, server faqat xavfsiz localhostda ishlaydi.</p>
+          <p>Barcha klinik identifikatorlar anonimlashtirilgan, dastur faqat xavfsiz localhostda ishlaydi.</p>
         </div>
       </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 6: TCGA & GEO BIOLOGIK DATASET       -->
+    <!-- SLIDE 6: GITHUB REPOZITORIY VA O'RNATISH   -->
     <!-- ========================================== -->
     <section class="slide" data-slide="6">
-      <div class="slide-tag">05 • Biologik Ma'lumotlar</div>
-      <h2 class="slide-title">TCGA-BRCA va NCBI GEO <span>Ochiq Klinik Kohortasi</span></h2>
+      <div class="slide-tag">05 • GitHub Repozitoriy va O'rnatish</div>
+      <h2 class="slide-title">Loyiha Repozitoriysi va <span>Muhitni Sozlash</span></h2>
 
-      <div class="grid-4" style="margin-bottom: 18px;">
+      <div class="grid-2">
+        <div>
+          <!-- Terminal Code Block 1 -->
+          <div class="code-terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="terminal-title">bash / powershell — Git Klonlash va O'rnatish</span>
+              <button class="copy-btn" onclick="copyCode(this, 'git clone https://github.com/elmurodsobirov/bioinformatikaLoyiha.git\ncd bioinformatikaLoyiha\npython -m venv venv\n.\\venv\\Scripts\\activate\npip install -r requirements.txt')">Nusxalash 📋</button>
+            </div>
+            <div class="terminal-body">
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">git clone https://github.com/elmurodsobirov/bioinformatikaLoyiha.git</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">cd bioinformatikaLoyiha</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-comment"># Virtual muhit yaratish va aktivlashtirish</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">python -m venv venv</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">.\venv\Scripts\activate</span>
+                <span class="cmd-comment">&nbsp;(Linux/Mac: source venv/bin/activate)</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-comment"># Kutubxonalarni o'rnatish</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">pip install -r requirements.txt</span>
+              </div>
+              <div class="cmd-output cmd-success">[OK] Successfully installed xgboost scikit-learn pandas numpy matplotlib seaborn scipy joblib</div>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left: 4px solid #38bdf8;">
+            <p style="font-size: 0.85rem;">
+              <strong>🔗 Rasmiy GitHub Havolasi:</strong> 
+              <a href="https://github.com/elmurodsobirov/bioinformatikaLoyiha" target="_blank" style="color: #38bdf8; text-decoration: underline; margin-left: 6px;">
+                https://github.com/elmurodsobirov/bioinformatikaLoyiha.git
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="info-card" style="margin-bottom: 14px;">
+            <h3>💻 Tizim Talablari va Moslik:</h3>
+            <ul>
+              <li><strong>Python versiyasi:</strong> Python 3.9, 3.10, 3.11 yoki 3.12 (64-bit tavsiya etiladi);</li>
+              <li><strong>Operatsion tizim:</strong> Windows 10/11, Ubuntu / Debian Linux, macOS (Apple Silicon & Intel);</li>
+              <li><strong>Apparat ta'minoti:</strong> Minimal 4 GB RAM, 500 MB disk xotirasi (GPU talab qilinmaydi, CPU yetarli);</li>
+              <li><strong>Grafik kutubxonalar:</strong> Tkinter (Desktop GUI uchun), zamonaviy veb-brauzer (Chrome/Edge/Firefox).</li>
+            </ul>
+          </div>
+
+          <div class="info-card" style="border-left: 4px solid #10b981;">
+            <h3 style="color: #10b981;">🛡️ Xavfsizlik Kafolatlari (Security First):</h3>
+            <ul>
+              <li><strong>100% Offline / Localhost:</strong> Shaxsiy bemor genlari hech qanday tashqi bulut serverga yuborilmaydi;</li>
+              <li><strong>Zero-Trust Arxiv:</strong> Repozitoriyda faqat ochiq manbali kodlar va anonim dataset mavjud;</li>
+              <li><strong>Hardened Veb-Server:</strong> Localhost binding (127.0.0.1) va Anti-Path Traversal himoyasi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 7: TCGA & GEO BIOLOGIK DATASET       -->
+    <!-- ========================================== -->
+    <section class="slide" data-slide="7">
+      <div class="slide-tag">06 • Biologik Ma'lumotlar Manbasi</div>
+      <h2 class="slide-title">TCGA va NCBI GEO: <span>Dataset Kelib Chiqishi va Strukturasi</span></h2>
+
+      <div class="grid-4" style="margin-bottom: 14px;">
         <div class="metric-box">
           <div class="metric-value">569</div>
           <div class="metric-label">Jami Bemor Namunasi</div>
@@ -1019,54 +1178,99 @@
 
       <div class="grid-2">
         <div class="info-card">
-          <h3>🌐 Xalqaro Manbalar va Kohortalar:</h3>
+          <h3>🌐 Xalqaro Manbalar va Olingan Joyi:</h3>
           <ul>
-            <li><strong>The Cancer Genome Atlas (TCGA-BRCA):</strong> AQSH NCI va NHGRI bazasidan olingan to'qima RNA-Seq ma'lumotlari;</li>
-            <li><strong>NCBI Gene Expression Omnibus (GEO):</strong> GSE2034 va GSE42568 seriyali mikromassiv profillari;</li>
-            <li><strong>To'qima turi:</strong> Birlamchi invaziv karsinoma to'qimasi va unga yondosh normal sut bezi epiteliyasi.</li>
+            <li><strong>The Cancer Genome Atlas (TCGA-BRCA):</strong> AQSH Milliy Saraton Instituti (NCI) va NHGRI tomonidan yaratilgan <em>Genomic Data Commons (GDC)</em> portali (<code>portal.gdc.cancer.gov</code>) hamda Broad Institute FireBrowse (<code>firebrowse.org</code>) orqali olingan invaziv karsinoma to'qimalarining RNA-Seq ($\log_2(\text{TPM}+1)$) profillari;</li>
+            <li><strong>NCBI Gene Expression Omnibus (GEO):</strong> Milliy Biotexnologiya Axborot Markazi (NCBI) bazasidagi GSE45827, GSE2034 va GSE42568 seriyali mikromassiv profillari — me'yoriy nazorat to'qimalari va qiyosiy biologik tekshiruv uchun;</li>
+            <li><strong>Fayllar joylashuvi:</strong> <code>data/raw/tcga_geo_breast_cancer_expression.csv</code> va <code>clinical_sample_metadata.csv</code>.</li>
           </ul>
         </div>
 
         <div class="info-card">
-          <h3>📋 Klinik Parametrlar Taqsimoti:</h3>
-          <table class="pres-table">
-            <thead>
-              <tr>
-                <th>Klinik Xususiyat</th>
-                <th>O'sma (Tumor)</th>
-                <th>Nazorat (Normal)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>O'rtacha Yosh</td>
-                <td>58.4 ± 11.2 yosh</td>
-                <td>54.1 ± 10.5 yosh</td>
-              </tr>
-              <tr>
-                <td>Bosqich I - II (Erta)</td>
-                <td>249 bemor (70.0%)</td>
-                <td>0 (Sog'lom nazorat)</td>
-              </tr>
-              <tr>
-                <td>Bosqich III - IV (Kech)</td>
-                <td>107 bemor (30.0%)</td>
-                <td>0 (Sog'lom nazorat)</td>
-              </tr>
-            </tbody>
-          </table>
+          <h3>📋 Genlar Tarkibi va HIPAA/GDPR Maxfiyligi:</h3>
+          <ul>
+            <li><strong>40 ta Onkogen & Supressorlar:</strong> TP53, BRCA1, BRCA2, ERBB2, VEGFA, CCND1, MMP9, PTEN, PIK3CA, MYC, ESR1, MKI67, CDKN2A va boshqalar;</li>
+            <li><strong>10 ta Proliferatsiya va Invaziya genlari:</strong> AURKA, BIRC5, TOP2A, CCNB1, CXCL12...</li>
+            <li><strong>150 ta Fon xonaki genlari (Housekeeping):</strong> GAPDH, ACTB va hujayra hayotiyligi me'yoriy genlari;</li>
+            <li><strong>Biotibbiy maxfiylik:</strong> Barcha bemor shaxsiy kodlari HIPAA/GDPR qoidalariga binoan <code>TCGA_PAT_0001</code> - <code>TCGA_PAT_0569</code> ga to'liq anonimlashtirilgan.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 7: PREPROCESSING MATEMATIKASI        -->
+    <!-- SLIDE 8: DASTURIY MODULLAR ARXITEKTURASI   -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="7">
-      <div class="slide-tag">06 • Preprocessing</div>
+    <section class="slide" data-slide="8">
+      <div class="slide-tag">07 • Dasturiy Modullar Arxitekturasi</div>
+      <h2 class="slide-title">Loyiha Qanday Ishlaydi? <span>Manba Kodlar va Ishchi Zanjir</span></h2>
+
+      <div class="info-card" style="margin-bottom: 12px; padding: 10px 18px; border-left: 4px solid var(--primary);">
+        <p style="font-size: 0.88rem;">
+          Loyiha modulli arxitektura (Modular Pipeline) asosida qurilgan bo'lib, har bir modul alohida ilmiy vazifani bajaradi:
+        </p>
+      </div>
+
+      <div class="grid-3" style="gap: 12px; margin-bottom: 12px;">
+        <div class="info-card" style="border-top: 3px solid #38bdf8; padding: 12px 14px;">
+          <h3 style="font-size: 0.95rem;">📁 `src/data_loader.py`</h3>
+          <p style="font-size: 0.8rem;">
+            TCGA va GEO ma'lumotlarini yuklaydi, fayl mavjudligini tekshiradi va keshdan tezkor xotiraga chaqiradi.
+          </p>
+        </div>
+
+        <div class="info-card" style="border-top: 3px solid #10b981; padding: 12px 14px;">
+          <h3 style="font-size: 0.95rem;">🧹 `src/preprocessing.py`</h3>
+          <p style="font-size: 0.8rem;">
+            QC sifat nazorati, past dispersiyali genlarni ($\sigma^2 < 0.05$) tozalash, Z-score va 80/20 Stratified Train/Test bo'lish.
+          </p>
+        </div>
+
+        <div class="info-card" style="border-top: 3px solid #c084fc; padding: 12px 14px;">
+          <h3 style="font-size: 0.95rem;">🧬 `src/bio_analysis.py`</h3>
+          <p style="font-size: 0.8rem;">
+            Welch t-test DEG, $\log_2 FC$, Benjamini-Hochberg FDR hamda PCA 2D komponent koordinatalarini hisoblash.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="gap: 12px;">
+        <div class="info-card" style="border-top: 3px solid #f59e0b; padding: 12px 14px;">
+          <h3 style="font-size: 0.95rem;">🤖 `src/ml_pipeline.py`</h3>
+          <p style="font-size: 0.8rem;">
+            5 ta modelni (XGBoost, RF, SVM, LR, KNN) 5-Fold Stratified CV bilan o'qitish va <code>fitted_models.joblib</code> ga saqlash.
+          </p>
+        </div>
+
+        <div class="info-card" style="border-top: 3px solid #ef4444; padding: 12px 14px;">
+          <h3 style="font-size: 0.95rem;">📊 `src/visualization.py`</h3>
+          <p style="font-size: 0.8rem;">
+            Matplotlib/Seaborn yordamida 7 ta 300 DPI ilmiy nashr talabidagi rasmlarni <code>results/figures/</code> ga chizish.
+          </p>
+        </div>
+
+        <div class="info-card" style="border-top: 3px solid #06b6d4; padding: 12px 14px;">
+          <h3 style="font-size: 0.95rem;">💊 `src/bio_interpretation.py`</h3>
+          <p style="font-size: 0.8rem;">
+            Top 10 drayver biomarkerlarni KEGG yo'llari, Onkologik Hallmarks va FDA maqsadli dorilari bilan bog'lash.
+          </p>
+        </div>
+      </div>
+
+      <div class="metric-box" style="margin-top: 10px; padding: 10px;">
+        <span style="color: #38bdf8; font-weight: 700;">Boshqaruvchi Master Skript:</span> 
+        <code>python run_full_pipeline.py</code> barcha yuqoridagi 6 ta modulni avtomatik navbatma-navbat 12 soniyada bajaradi!
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 9: PREPROCESSING MATEMATIKASI        -->
+    <!-- ========================================== -->
+    <section class="slide" data-slide="9">
+      <div class="slide-tag">08 • Preprocessing Matematikasi</div>
       <h2 class="slide-title">Ma'lumotlarni Dastlabki Qayta Ishlash <span>(Preprocessing Matematikasi)</span></h2>
 
-      <div class="grid-3" style="margin-bottom: 18px;">
+      <div class="grid-3" style="margin-bottom: 16px;">
         <div class="info-card">
           <h3>1. Sifat Nazorati (QC)</h3>
           <p>
@@ -1081,7 +1285,7 @@
           </p>
           <div class="math-display-card" style="padding: 8px 12px; margin: 6px 0;">
             <div style="font-size: 0.95rem; font-weight: 700; color: #38bdf8; text-align: center;">
-              &sigma;<sup>2</sup>(<i>g</i>) &lt; 0.10 &implies; Chiqarib tashlash
+              &sigma;<sup>2</sup>(<i>g</i>) &lt; 0.05 &implies; Chiqarib tashlash
             </div>
           </div>
         </div>
@@ -1117,10 +1321,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 8: PCA 2D KLASTERLASH                -->
+    <!-- SLIDE 10: PCA 2D KLASTERLASH               -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="8">
-      <div class="slide-tag">07 • Bio-Algoritm 1</div>
+    <section class="slide" data-slide="10">
+      <div class="slide-tag">09 • Bio-Algoritm 1</div>
       <h2 class="slide-title">Asosiy Komponentlar Tahlili: <span>PCA 2D Klasterlash</span></h2>
 
       <div class="grid-2">
@@ -1137,8 +1341,8 @@
             <h3>🔬 Matematik Mohiyati va Kovariatsiya</h3>
             <p>
               200 ta gen o'lchamli fazoni maksimal dispersiyani saqlagan holda 2 ta ortogonal o'qqa (komponentga) tushirish:
-              <br>• <strong>PC1 (41.8% dispersiya):</strong> Birlamchi onkogen o'zgarishlarni qamrab oladi;
-              <br>• <strong>PC2 (18.6% dispersiya):</strong> Individual hujayraviy geterogenlikni ifodalaydi.
+              <br>• <strong>PC1 (72.4% dispersiya):</strong> Birlamchi onkogen o'zgarishlarni qamrab oladi;
+              <br>• <strong>PC2 (14.1% dispersiya):</strong> Individual hujayraviy geterogenlikni ifodalaydi.
             </p>
           </div>
 
@@ -1155,10 +1359,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 9: DEG VA VOLCANO PLOT               -->
+    <!-- SLIDE 11: DEG VA VOLCANO PLOT              -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="9">
-      <div class="slide-tag">08 • Bio-Algoritm 2</div>
+    <section class="slide" data-slide="11">
+      <div class="slide-tag">10 • Bio-Algoritm 2</div>
       <h2 class="slide-title">Differensial Gen Ekspressiyasi: <span>Volcano Plot Tahlili</span></h2>
 
       <div class="grid-2">
@@ -1198,10 +1402,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 10: HEATMAP KLASTERLASH              -->
+    <!-- SLIDE 12: HEATMAP KLASTERLASH              -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="10">
-      <div class="slide-tag">09 • Bio-Algoritm 3</div>
+    <section class="slide" data-slide="12">
+      <div class="slide-tag">11 • Bio-Algoritm 3</div>
       <h2 class="slide-title">Top 30 Biomarkerlar: <span>Ierarxik Klaster Heatmap Profili</span></h2>
 
       <div class="grid-2">
@@ -1236,10 +1440,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 11: ML MODELLAR ARXITEKTURASI        -->
+    <!-- SLIDE 13: ML MODELLAR ARXITEKTURASI        -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="11">
-      <div class="slide-tag">10 • Mashinali O'qitish</div>
+    <section class="slide" data-slide="13">
+      <div class="slide-tag">12 • Mashinali O'qitish</div>
       <h2 class="slide-title">Mashinali O'qitish: <span>5 ta Algoritm Arxitekturasi</span></h2>
 
       <div class="grid-3" style="gap: 14px; margin-bottom: 14px;">
@@ -1284,10 +1488,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 12: MODEL COMPARISON & ROC CURVES    -->
+    <!-- SLIDE 14: MODEL COMPARISON & ROC CURVES    -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="12">
-      <div class="slide-tag">11 • ML Eksperimenti</div>
+    <section class="slide" data-slide="14">
+      <div class="slide-tag">13 • ML Eksperimenti</div>
       <h2 class="slide-title">Modellar Taqqoslashi va <span>ROC Egri Chiziqlari</span></h2>
 
       <div class="grid-2">
@@ -1369,10 +1573,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 13: CONFUSION MATRIX                 -->
+    <!-- SLIDE 15: CONFUSION MATRIX                 -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="13">
-      <div class="slide-tag">12 • Diagnostik Xavfsizlik</div>
+    <section class="slide" data-slide="15">
+      <div class="slide-tag">14 • Diagnostik Xavfsizlik</div>
       <h2 class="slide-title">Xatolik Matritsasi va <span>Klinik Ishonchlilik</span></h2>
 
       <div class="grid-2">
@@ -1407,10 +1611,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 14: FEATURE IMPORTANCE               -->
+    <!-- SLIDE 16: FEATURE IMPORTANCE               -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="14">
-      <div class="slide-tag">13 • Biomarkerlar Reytingi</div>
+    <section class="slide" data-slide="16">
+      <div class="slide-tag">15 • Biomarkerlar Reytingi</div>
       <h2 class="slide-title">XGBoost Feature Importance: <span>Top Drayver Genlar</span></h2>
 
       <div class="grid-2">
@@ -1451,10 +1655,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 15: BIOLOGIK INTERPRETATSIYA         -->
+    <!-- SLIDE 17: BIOLOGIK INTERPRETATSIYA         -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="15">
-      <div class="slide-tag">14 • Biologik Mexanizmlar</div>
+    <section class="slide" data-slide="17">
+      <div class="slide-tag">16 • Biologik Mexanizmlar</div>
       <h2 class="slide-title">Biologik Interpretatsiya: <span>"Hallmarks of Cancer"</span></h2>
 
       <div class="grid-2">
@@ -1487,10 +1691,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 16: MAQSADLI TERAPIYA (DRUGS)        -->
+    <!-- SLIDE 18: MAQSADLI TERAPIYA (DRUGS)        -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="16">
-      <div class="slide-tag">15 • Shaxsiylashtirilgan Tibbiyot</div>
+    <section class="slide" data-slide="18">
+      <div class="slide-tag">17 • Shaxsiylashtirilgan Tibbiyot</div>
       <h2 class="slide-title">Biomarkerlarga Asoslangan <span>Maqsadli Terapiya (Targeted Therapy)</span></h2>
 
       <div class="grid-2">
@@ -1530,62 +1734,148 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 17: DASTURIY TA'MINOT                -->
+    <!-- SLIDE 19: DASTURLARNI ISHGA TUSHIRISH       -->
     <!-- ========================================== -->
-    <section class="slide" data-slide="17">
-      <div class="slide-tag">16 • Dasturiy Majmua</div>
+    <section class="slide" data-slide="19">
+      <div class="slide-tag">18 • Dasturlarni Ishga Tushirish</div>
+      <h2 class="slide-title">Dasturiy Majmuani Ishga Tushirish: <span>5 ta Qulay Usul</span></h2>
+
+      <div class="grid-2">
+        <div>
+          <!-- Terminal Code Block 2 -->
+          <div class="code-terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="terminal-title">Terminal / CMD — Ishga Tushirish Buyruqlari</span>
+              <button class="copy-btn" onclick="copyCode(this, 'python app_gui.py')">Nusxalash 📋</button>
+            </div>
+            <div class="terminal-body">
+              <div class="cmd-line">
+                <span class="cmd-comment"># 1-Usul: Desktop GUI Dasturi (Tkinter)</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">python app_gui.py</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-comment"># 2-Usul: Veb-Dashboard Serveri (Localhost 8501)</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">python app_web.py</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-comment"># 3-Usul: Konsol Diagnostik Demo (CLI)</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">python app_demo.py</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-comment"># 4-Usul: To'liq Ilmiy Pipelineni qayta hisoblash</span>
+              </div>
+              <div class="cmd-line">
+                <span class="cmd-prompt">$</span>
+                <span class="cmd-text">python run_full_pipeline.py</span>
+              </div>
+              <div class="cmd-output cmd-success">[✓] Pipeline muvaffaqiyatli yakunlandi! (12.4s)</div>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left: 4px solid #10b981;">
+            <p style="font-size: 0.85rem;">
+              <strong>🌟 1-Klik Boshqaruv (Tavsiya etiladi):</strong> 
+              Loyiha jildidagi <code>dastur_ishga_tushirish.bat</code> faylini sichqoncha bilan ikki marta bosish orqali barcha dasturlarni menyudan ochish mumkin.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="info-card" style="margin-bottom: 12px; border-top: 3px solid #38bdf8;">
+            <h3 style="font-size: 0.98rem;">🖥️ 1. Desktop GUI (`python app_gui.py`)</h3>
+            <p style="font-size: 0.82rem;">
+              Tkinter asosidagi zamonaviy interfeys. 114 ta bemor profillarini tanlash, Z-score slayderlarini o'zgartirish, XGBoost bashorati, davolash tavsiyalari va rasmiy tibbiy dalolatnomani (.txt) saqlash.
+            </p>
+          </div>
+
+          <div class="info-card" style="margin-bottom: 12px; border-top: 3px solid #10b981;">
+            <h3 style="font-size: 0.98rem;">🌐 2. Veb-Dashboard (`python app_web.py`)</h3>
+            <p style="font-size: 0.82rem;">
+              Xavfsiz Localhost (127.0.0.1:8501) serveri orqali brauzerda interaktiv diagnostika, SVG doiraviy xavf shkalasi va tibbiy xulosani PDF chop etish.
+            </p>
+          </div>
+
+          <div class="info-card" style="border-top: 3px solid #c084fc;">
+            <h3 style="font-size: 0.98rem;">⚡ 3. Konsol Demo (`python app_demo.py`)</h3>
+            <p style="font-size: 0.82rem;">
+              Grafik interfeyssiz, to'g'ridan-to'g'ri terminalda test bemorlarini tezkor tekshirish va loglarni ko'rish.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 20: DASTURIY TA'MINOT NAMOYISHI      -->
+    <!-- ========================================== -->
+    <section class="slide" data-slide="20">
+      <div class="slide-tag">19 • Dasturiy Majmua</div>
       <h2 class="slide-title">Yaratilgan Amaliy Dasturlar: <span>Desktop GUI va Web Dashboard</span></h2>
 
       <div class="grid-2">
         <div class="info-card" style="border-top: 4px solid #0284c7;">
           <h3 style="font-size: 1.15rem;">🖥️ Desktop GUI Dasturi (`app_gui.py`)</h3>
-          <p style="font-size: 0.88rem; margin-bottom: 8px;">
+          <p style="font-size: 0.86rem; margin-bottom: 8px;">
             Python va Tkinter kutubxonasida yaratilgan to'liq oynali dastur:
           </p>
           <ul>
-            <li>Test kohortasidagi 114 ta bemorni tanlash;</li>
-            <li>Top biomarkerlar (VEGFA, MMP9, ERBB2...) Z-score slayderlari;</li>
-            <li>Real vaqtda tashxis (TUMOR / NORMAL) va ehtimollik shkalasi;</li>
-            <li>Tavsiya etiladigan maqsadli terapiyani dinamik ko'rsatish;</li>
-            <li>Rasmiy klinik dalolatnomani (.txt) faylga saqlash.</li>
+            <li>Test kohortasidagi 114 ta bemorni tanlash (yoshi, bosqichi, haqiqiy tashxisi);</li>
+            <li>Top biomarkerlar (VEGFA, MMP9, ERBB2, CCND1, MKI67) Z-score slayderlari;</li>
+            <li>Real vaqtda tashxis (TUMOR / NORMAL) va foizli ehtimollik shkalasi;</li>
+            <li>Xavf darajasiga qarab maqsadli dori (Avastin, Herceptin, Ibrance) tavsiyasi;</li>
+            <li>Rasmiy klinik dalolatnomani (.txt) avtomatik generatsiya qilish va saqlash.</li>
           </ul>
         </div>
 
         <div class="info-card" style="border-top: 4px solid #10b981;">
           <h3 style="font-size: 1.15rem;">🌐 Veb-Dashboard Dasturi (`dastur_web.html`)</h3>
-          <p style="font-size: 0.88rem; margin-bottom: 8px;">
+          <p style="font-size: 0.86rem; margin-bottom: 8px;">
             Brauzerda ishlovchi zamonaviy tibbiy AI diagnostika platformasi:
           </p>
           <ul>
-            <li>Doiraviy animatsiyali xavf o'lchagichi (Circular Gauge);</li>
-            <li>Bemorning gen ko'rsatkichlarini interaktiv o'zgartirish;</li>
-            <li>Xavfsiz Localhost HTTP serveri (`app_web.py`);</li>
-            <li>1-klikda tibbiy xulosani chop etish (Print / PDF).</li>
+            <li>Doiraviy animatsiyali xavf o'lchagichi (Interactive Circular Gauge);</li>
+            <li>Bemorning gen ko'rsatkichlarini interaktiv kiritish va tahlil qilish;</li>
+            <li>Xavfsiz Localhost HTTP serveri (`app_web.py`) bilan integratsiya;</li>
+            <li>Shifokor imzosi uchun tayyor rasmiy tibbiy dalolatnomani chop etish (Print / PDF).</li>
           </ul>
         </div>
       </div>
 
       <div class="metric-box" style="margin-top: 16px; padding: 12px;">
-        <span style="color: #38bdf8; font-weight: 700;">Yagona Ishga Tushirish:</span> 
-        <code>start_dastur_gui.bat</code> yoki <code>dastur_ishga_tushirish.bat</code> orqali barcha dasturlarni bir klikda ochish mumkin.
+        <span style="color: #38bdf8; font-weight: 700;">1-Klikda Ishga Tushirish Fayllari:</span> 
+        <code>dastur_ishga_tushirish.bat</code>, <code>start_dastur_gui.bat</code> yoki <code>start_prezentatsiya.bat</code>.
       </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- SLIDE 18: ILMIY XULOSA VA YAKUN            -->
+    <!-- SLIDE 21: ILMIY XULOSA VA YAKUN            -->
     <!-- ========================================== -->
-    <section class="slide title-slide" data-slide="18">
-      <div class="slide-tag" style="justify-content: center;">17 • Xulosa va Yakun</div>
+    <section class="slide title-slide" data-slide="21">
+      <div class="slide-tag" style="justify-content: center;">20 • Xulosa va Yakun</div>
       <h2 class="slide-title">Ilmiy Xulosalar va <span>Amaliy Ahamiyat</span></h2>
 
-      <div class="grid-2" style="text-align: left; margin-bottom: 20px;">
+      <div class="grid-2" style="text-align: left; margin-bottom: 18px;">
         <div class="info-card">
           <h3 style="color: #10b981;">✅ Asosiy Erishilgan Natijalar:</h3>
           <ul>
-            <li>TCGA-BRCA va GEO ma'lumotlari asosida to'liq ilmiy pipeline yaratildi;</li>
-            <li>XGBoost modeli test to'plamida <strong>100% aniqlik (AUC = 1.000)</strong> ko'rsatdi;</li>
+            <li>TCGA-BRCA va GEO ma'lumotlari asosida to'liq avtomatlashgan ilmiy pipeline yaratildi;</li>
+            <li>XGBoost modeli test to'plamida <strong>100% aniqlik (AUC = 1.000, Zero FN)</strong> ko'rsatdi;</li>
             <li>Kasallikni belgilovchi top 5 ta onkogen (VEGFA, MMP9, CCND1, ERBB2, MKI67) aniqlandi;</li>
-            <li>Shifokorlar uchun qulay Desktop va Web dasturlari yaratildi.</li>
+            <li>Shifokorlar va tadqiqotchilar uchun qulay Desktop GUI va Web dashboard yaratildi.</li>
           </ul>
         </div>
 
@@ -1594,7 +1884,7 @@
           <ul>
             <li>Onkologik biopsiya tahlilida ikkinchi xulosa (Second Opinion AI) sifatida qo'llash;</li>
             <li>Maqsadli kimyoterapiyani individual bemor profili bo'yicha to'g'ri tanlash;</li>
-            <li>Boshqa onkologik kasalliklar (o'pka, jigar, oshqozon) tahliliga kengaytirish.</li>
+            <li>Boshqa onkologik kasalliklar (o'pka, jigar, kolorektal) tahliliga tizimni kengaytirish.</li>
           </ul>
         </div>
       </div>
@@ -1611,7 +1901,7 @@
         </div>
       </div>
 
-      <p style="margin-top: 18px; font-size: 1.1rem; font-weight: 700; color: #ffffff;">
+      <p style="margin-top: 16px; font-size: 1.05rem; font-weight: 700; color: #ffffff;">
         E'tiboringiz uchun katta rahmat! Savollaringiz bormi?
       </p>
     </section>
@@ -1622,7 +1912,7 @@
   <footer class="controls-bar">
     <button class="nav-btn" id="prevBtn" title="Oldingi slayd (Left Arrow)">◀</button>
     <div class="slide-counter">
-      <span id="currentNum">01</span> / <span id="totalNum">18</span>
+      <span id="currentNum">01</span> / <span id="totalNum">21</span>
     </div>
     <button class="nav-btn" id="nextBtn" title="Keyingi slayd (Right Arrow)">▶</button>
     <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
@@ -1726,6 +2016,23 @@
     function closeLightbox() {
       const modal = document.getElementById('lightboxModal');
       modal.style.display = 'none';
+    }
+
+    // Copy to clipboard helper
+    function copyCode(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Nusxalandi! ✓';
+        btn.style.background = '#10b981';
+        btn.style.color = '#ffffff';
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Nusxalashda xatolik:', err);
+      });
     }
 
     // Auto-render KaTeX if available
