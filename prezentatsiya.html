@@ -837,7 +837,7 @@
         <div class="info-card">
           <h3 style="color: #f59e0b;">💰 Iqtisodiy va Klinik Tejamkorlik:</h3>
           <p style="margin-bottom: 8px;">
-            Erta (I bosqich) aniqlanganda davolash xarajati o'rtacha <strong>$22,000 / bemor</strong> bo'lsa, IV bosqichda (maqsadli kimyoterapiya, radiatsiya, palliativ parvarish) <strong>$165,000+</strong> ga yetadi.
+            Erta (I bosqich) aniqlanganda davolash xarajati o'rtacha <strong>\$22,000 / bemor</strong> bo'lsa, IV bosqichda (maqsadli kimyoterapiya, radiatsiya, palliativ parvarish) <strong>\$165,000+</strong> ga yetadi.
           </p>
           <p>
             Molekulyar skrining orqali erta aniqlash sog'liqni saqlash byudjetini <strong>7.5 baravargacha tejaydi</strong> va minglab insonlar hayotini saqlab qoladi.
@@ -893,15 +893,15 @@
           <ul>
             <li><strong>O'lchamlar nomutanosibligi:</strong> Funktsional genomikada bemorlar soni ($n \sim 10^2 - 10^3$) genlar ifodalanishi soniga ($p \sim 20,000 - 55,000$) nisbatan yuzlab barobar kam bo'ladi.</li>
             <li><strong>Overfitting (Yodlab olish) xavfi:</strong> Giper-fazoda ma'lumotlar o'ta siyrak joylashadi. Oddiy neyron tarmoqlar yoki klassik chiziqli regressiya o'quv tanlanmasini 100% yodlab oladi, biroq yangi bemorda umumlashmaydi (Generalization Error keskin ortadi).</li>
-            <li><strong>Multikollinearlik (Multicollinearity):</strong> Genlar bir-biridan mustaqil emas — biologik signal kaskadlarida birgalikda klasterlanadi ($	ext{VIF} > 10$). Bu an'anaviy statistik modellar kovariatsiya matritsasining singulyarligiga olib keladi.</li>
+            <li><strong>Multikollinearlik (Multicollinearity):</strong> Genlar bir-biridan mustaqil emas — biologik signal kaskadlarida birgalikda klasterlanadi ($\text{VIF} > 10$). Bu an'anaviy statistik modellar kovariatsiya matritsasining singulyarligiga olib keladi.</li>
           </ul>
         </div>
 
         <div class="info-card">
           <h3 style="color: #f59e0b;">🎲 Ko'p Karrali Gipotezalarni Tekshirish Xatoligi (Multiple Testing Fallacy):</h3>
           <ul>
-            <li><strong>Soxta kashfiyotlar ko'payishi:</strong> Agar $p = 20,000$ ta gen uchun an'anaviy $lpha = 0.05$ bilan t-test o'tkazilsa, kutilayotgan soxta musbatlar soni:
-            $$\mathbb{E}[	ext{Soxta Musbatlar}] = 20,000 	imes 0.05 = \mathbf{1,000 	ext{ ta soxta biomarker!}}$$</li>
+            <li><strong>Soxta kashfiyotlar ko'payishi:</strong> Agar $p = 20,000$ ta gen uchun an'anaviy $\alpha = 0.05$ bilan t-test o'tkazilsa, kutilayotgan soxta musbatlar soni:
+            $$\mathbb{E}[\text{Soxta Musbatlar}] = 20,000 \times 0.05 = \mathbf{1,000 \text{ ta soxta biomarker!}}$$</li>
             <li><strong>Klinik xavf:</strong> Ushbu 1,000 ta soxta biomarker asosida tayinlangan dorilar bemorga zarracha naf bermaydi va sog'liqni xavf ostiga qo'yadi.</li>
             <li><strong>Statistik yechim zaruriyati:</strong> Konservativ bo'lmagan, biroq soxta kashfiyotlar ulushini (FDR) qat'iy nazorat qiluvchi zamonaviy algoritmlar zarur.</li>
           </ul>
@@ -912,11 +912,10 @@
         <div class="math-display-card">
           <div style="font-size:0.95rem; font-weight:700; color:#38bdf8; margin-bottom:6px;">📐 Statistik Korreksiya Usullari Qiyosi:</div>
           <div class="math-equation">
-            <span>Bonferroni: $lpha_{	ext{bonf}} = rac{lpha}{m} = rac{0.05}{20,000} = 2.5 	imes 10^{-6}$ (Haddan tashqari qat'iy)</span>
+            <span>Bonferroni: $\alpha_{\text{bonf}} = \frac{\alpha}{m} = \frac{0.05}{20,000} = 2.5 \times 10^{-6}$ (Haddan tashqari qat'iy)</span>
           </div>
           <div class="math-equation" style="margin-top:6px; border-color:rgba(16,185,129,0.5);">
-            <span style="color:#34d399;">Benjamini-Hochberg (BH FDR): $q_i = \min_{k \ge i} \left(rac{m}{k} p_{(k)}
-ight) \le 0.05$ (Optimal)</span>
+            <span style="color:#34d399;">Benjamini-Hochberg (BH FDR): $q_i = \min_{k \ge i} \left(\frac{m}{k} p_{(k)}\right) \le 0.05$ (Optimal)</span>
           </div>
         </div>
 
@@ -924,8 +923,8 @@ ight) \le 0.05$ (Optimal)</span>
           <h3 style="color: #10b981;">🛡️ Loyihamizda Qabul Qilingan 3 Bosqichli Filtrlash Yechimi:</h3>
           <ul>
             <li><strong>1. Dispersiya bo'yicha qirqish (Variance Threshold):</strong> $\sigma^2 < 0.05$ bo'lgan informatsion yuksiz genlar olib tashlandi;</li>
-            <li><strong>2. Differensial gen ekspressiyasi (DEG):</strong> Welch t-test + BH FDR $q < 0.05$ va $|\log_2	ext{FC}| \ge 1.0$ sharti;</li>
-            <li><strong>3. L1/L2 regulyarizatsiyalangan XGBoost:</strong> $\gamma T + rac{1}{2}\lambda \sum w_j^2 + lpha \sum |w_j|$ orqali o'lchamlar to'liq jilovlandi.</li>
+            <li><strong>2. Differensial gen ekspressiyasi (DEG):</strong> Welch t-test + BH FDR $q < 0.05$ va $|\log_2\text{FC}| \ge 1.0$ sharti;</li>
+            <li><strong>3. L1/L2 regulyarizatsiyalangan XGBoost:</strong> $\gamma T + \frac{1}{2}\lambda \sum w_j^2 + \alpha \sum |w_j|$ orqali o'lchamlar to'liq jilovlandi.</li>
           </ul>
         </div>
       </div>
@@ -981,7 +980,7 @@ ight) \le 0.05$ (Optimal)</span>
             <li><strong>Manbalar:</strong> TCGA-BRCA va NCBI GEO (GSE45827);</li>
             <li><strong>Kohorta:</strong> 569 bemor to'qimasi biopsiyasi;</li>
             <li><strong>Profil:</strong> 200 transkriptomik lokus;</li>
-            <li><strong>Masshtab:</strong> $\log_2(	ext{TPM} + 1)$ normalizatsiyalangan.</li>
+            <li><strong>Masshtab:</strong> $\log_2(\text{TPM} + 1)$ normalizatsiyalangan.</li>
           </ul>
         </div>
 
@@ -1009,7 +1008,7 @@ ight) \le 0.05$ (Optimal)</span>
       <div class="grid-4" style="margin-bottom: 8px;">
         <div class="info-card">
           <h3 style="color: #ef4444; font-size:1.02rem;">4. DEG Volcano Plot</h3>
-          <p style="font-size:0.92rem;">Welch t-test + BH FDR ($q < 0.05, |\log_2	ext{FC}| \ge 1.0$). 16 ta onkogen faollashgan, 5 ta supressor so'ngan.</p>
+          <p style="font-size:0.92rem;">Welch t-test + BH FDR ($q < 0.05, |\log_2\text{FC}| \ge 1.0$). 16 ta onkogen faollashgan, 5 ta supressor so'ngan.</p>
         </div>
         <div class="info-card">
           <h3 style="color: #a855f7; font-size:1.02rem;">5. Supervised ML</h3>
@@ -1044,13 +1043,13 @@ ight) \le 0.05$ (Optimal)</span>
               <td><strong>1-2. Ingestion & QC</strong></td>
               <td>TCGA / GEO xom transkriptlar</td>
               <td>Missing-value Impute + Z-score Standard</td>
-              <td>$569 	imes 200$ ($\mu=0, \sigma=1$)</td>
+              <td>$569 \times 200$ ($\mu=0, \sigma=1$)</td>
               <td><strong>0.42 s</strong></td>
               <td>100% to'liq, 0 ta missing value</td>
             </tr>
             <tr>
               <td><strong>3-4. EDA & DEG</strong></td>
-              <td>$569 	imes 200$ normallangan matritsa</td>
+              <td>$569 \times 200$ normallangan matritsa</td>
               <td>PCA SVD + Welch t-test & Benjamini-Hochberg</td>
               <td>2D Proyeksiya + Volcano Plot</td>
               <td><strong>1.15 s</strong></td>
@@ -1095,7 +1094,7 @@ ight) \le 0.05$ (Optimal)</span>
               <div class="cmd-line"><span class="cmd-prompt">$</span><span class="cmd-text">cd bioinformatikaLoyiha</span></div>
               <div class="cmd-comment" style="margin-top:6px;"># 2. Virtual muhit (Virtualenv) yaratish va faollashtirish</div>
               <div class="cmd-line"><span class="cmd-prompt">$</span><span class="cmd-text">python -m venv venv</span></div>
-              <div class="cmd-line"><span class="cmd-prompt">$</span><span class="cmd-text">venv\Scriptsctivate <span class="cmd-comment"># Windows</span></span></div>
+              <div class="cmd-line"><span class="cmd-prompt">$</span><span class="cmd-text">venv\Scriptsactivate <span class="cmd-comment"># Windows</span></span></div>
               <div class="cmd-line"><span class="cmd-prompt">$</span><span class="cmd-text">source venv/bin/activate <span class="cmd-comment"># Linux / macOS</span></span></div>
               <div class="cmd-comment" style="margin-top:6px;"># 3. Rasmiy bog'liqliklar paketini o'rnatish</div>
               <div class="cmd-line"><span class="cmd-prompt">$</span><span class="cmd-text">pip install -r requirements.txt</span></div>
@@ -1144,7 +1143,7 @@ ight) \le 0.05$ (Optimal)</span>
                 </tr>
                 <tr>
                   <td><strong>Kutubxonalar</strong></td>
-                  <td>scikit-learn $\ge$ 1.3, xgboost $\ge$ 2.0</td>
+                  <td>scikit-learn &ge; 1.3, xgboost &ge; 2.0</td>
                   <td>requirements.txt orqali avto-o'rnatiladi</td>
                 </tr>
               </tbody>
@@ -1207,7 +1206,7 @@ ight) \le 0.05$ (Optimal)</span>
         <div class="math-display-card" style="margin: 0; padding: 10px 14px;">
           <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 RNA-Seq Log-Transformatsiya Matematikasi:</div>
           <div class="math-equation" style="padding: 6px 12px; font-size: 1.05rem;">
-            $$y_{ij} = \log_2(	ext{TPM}_{ij} + 1)$$
+            $$y_{ij} = \log_2(\text{TPM}_{ij} + 1)$$
           </div>
           <p style="font-size:0.88rem; color:#cbd5e1; margin-top:4px; line-height:1.45;">
             Xom transkriptlar (TPM — Transcripts Per Million) assimetrik taqsimotga ega. $+1$ psevdo-qiymatli $\log_2$ o'zgartirish dispersiyani barqarorlashtiradi va Gauss holatiga keltiradi.
@@ -1354,7 +1353,7 @@ ight) \le 0.05$ (Optimal)</span>
         <div class="info-card">
           <h3 style="color: #38bdf8;">🔍 Sifat Nazorati (Quality Control) Natijalari:</h3>
           <ul>
-            <li><strong>Bo'sh qiymatlar tahlili:</strong> 569 bemor $	imes$ 200 gen matritsasida jami 113,800 katakchadan 0 ta ($0.0\%$) NaN / Missing value aniqlandi. Ma'lumotlar yaxlitligi 100%;</li>
+            <li><strong>Bo'sh qiymatlar tahlili:</strong> 569 bemor $\times$ 200 gen matritsasida jami 113,800 katakchadan 0 ta ($0.0\%$) NaN / Missing value aniqlandi. Ma'lumotlar yaxlitligi 100%;</li>
             <li><strong>Dispersiya bo'yicha filtrlash (Variance Threshold):</strong> O'sma va sog'lom to'qima o'rtasida o'zgarmas fon ifodalanishiga ega bo'lgan genlar $\sigma_j^2 < 0.05$ mezoni bilan tekshirildi;</li>
             <li><strong>Shovqinni bostirish:</strong> Past ifodalangan transkriptlar kesilib, faqat axborot beruvchi onkogenik signal saqlab qolindi.</li>
           </ul>
@@ -1363,8 +1362,8 @@ ight) \le 0.05$ (Optimal)</span>
         <div class="info-card">
           <h3 style="color: #10b981;">✂️ Stratified Train/Test Bo'linish Strategiyasi:</h3>
           <ul>
-            <li><strong>O'qitish to'plami (Train Set - 80%):</strong> $n_{	ext{train}} = 455$ ta bemor (285 Tumor, 170 Normal);</li>
-            <li><strong>Mustaqil sinov to'plami (Test Set - 20%):</strong> $n_{	ext{test}} = 114$ ta bemor (71 Tumor, 43 Normal);</li>
+            <li><strong>O'qitish to'plami (Train Set - 80%):</strong> $n_{\text{train}} = 455$ ta bemor (285 Tumor, 170 Normal);</li>
+            <li><strong>Mustaqil sinov to'plami (Test Set - 20%):</strong> $n_{\text{test}} = 114$ ta bemor (71 Tumor, 43 Normal);</li>
             <li><strong>Stratifikatsiya:</strong> Sinflar proporsiyasi (Tumor 62.6% : Normal 37.4%) har ikkala to'plamda qat'iy saqlandi (`stratify=y`, `random_state=42`);</li>
             <li><strong>Data Leakage Kafolati:</strong> Test to'plami o'qitish vaqtida mutlaqo ko'rsatilmadi (ma'lumot sizishi 0%).</li>
           </ul>
@@ -1374,7 +1373,7 @@ ight) \le 0.05$ (Optimal)</span>
       <div class="math-display-card" style="margin: 0 0 8px 0; padding: 10px 14px;">
         <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 Z-Score Transkriptomik Standartlashtirish Formulalari:</div>
         <div class="math-equation" style="padding: 6px 12px; font-size: 1.05rem;">
-          $$\mu_j = rac{1}{n}\sum_{i=1}^n x_{ij}, \quad \sigma_j = \sqrt{rac{1}{n-1}\sum_{i=1}^n (x_{ij}-\mu_j)^2}, \quad z_{ij} = rac{x_{ij} - \mu_j}{\sigma_j}$$
+          $$\mu_j = \frac{1}{n}\sum_{i=1}^n x_{ij}, \quad \sigma_j = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_{ij}-\mu_j)^2}, \quad z_{ij} = \frac{x_{ij} - \mu_j}{\sigma_j}$$
         </div>
       </div>
 
@@ -1434,7 +1433,7 @@ ight) \le 0.05$ (Optimal)</span>
           <div class="math-display-card" style="margin: 0;">
             <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 Kovariatsiya va Xos Qiymatlar Spektri:</div>
             <div class="math-equation">
-              $$C = rac{1}{n-1} Z^T Z, \quad C v_k = \lambda_k v_k, \quad 	ext{EVR}_k = rac{\lambda_k}{\sum_{m=1}^p \lambda_m}$$
+              $$C = \frac{1}{n-1} Z^T Z, \quad C v_k = \lambda_k v_k, \quad \text{EVR}_k = \frac{\lambda_k}{\sum_{m=1}^p \lambda_m}$$
             </div>
           </div>
 
@@ -1443,7 +1442,7 @@ ight) \le 0.05$ (Optimal)</span>
             <ul>
               <li><strong>Asosiy Komponent 1 (PC1):</strong> <strong>72.4%</strong> umumiy transkriptomik dispersiyani tushuntiradi;</li>
               <li><strong>Asosiy Komponent 2 (PC2):</strong> <strong>14.1%</strong> dispersiyani o'zida aks ettiradi;</li>
-              <li><strong>Kumulyativ Axborot:</strong> $	ext{PC1} + 	ext{PC2} = \mathbf{86.5\%}$! 200 ta gen axborotining qariyb 90 foizi 2 o'lchamli fazoda saqlab qolindi.</li>
+              <li><strong>Kumulyativ Axborot:</strong> $\text{PC1} + \text{PC2} = \mathbf{86.5\%}$! 200 ta gen axborotining qariyb 90 foizi 2 o'lchamli fazoda saqlab qolindi.</li>
             </ul>
           </div>
 
@@ -1479,28 +1478,27 @@ ight) \le 0.05$ (Optimal)</span>
           <div class="math-display-card" style="margin: 0; padding: 10px 14px;">
             <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 Welch t-testi va Benjamini-Hochberg FDR:</div>
             <div class="math-equation" style="padding: 6px 12px; font-size: 1.05rem;">
-              $$t = rac{ar{X}_{	ext{Tumor}} - ar{X}_{	ext{Normal}}}{\sqrt{rac{s_{	ext{T}}^2}{n_{	ext{T}}} + rac{s_{	ext{N}}^2}{n_{	ext{N}}}}}, \quad q_i = \min_{k \ge i} \left(rac{m}{k} p_{(k)}
-ight) \le 0.05$$
+              $$t = \frac{\bar{X}_{\text{Tumor}} - \bar{X}_{\text{Normal}}}{\sqrt{\frac{s_{\text{T}}^2}{n_{\text{T}}} + \frac{s_{\text{N}}^2}{n_{\text{N}}}}}, \quad q_i = \min_{k \ge i} \left(\frac{m}{k} p_{(k)}\right) \le 0.05$$
             </div>
           </div>
 
           <div class="info-card" style="padding: 10px 14px;">
             <h3 style="color: #ef4444; font-size: 1.02rem; margin-bottom: 4px;">🔴 16 ta Kuchli Faollashgan Onkogen (Upregulated):</h3>
             <p style="font-size:0.90rem; margin-bottom:4px;">
-              $\log_2	ext{FC} \ge +1.0$ (ifodalanish kamida 2 barobar ortgan) va $q < 0.05$:
+              $\log_2\text{FC} \ge +1.0$ (ifodalanish kamida 2 barobar ortgan) va $q < 0.05$:
             </p>
             <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.45;">
-              <strong>VEGFA</strong> ($\log_2	ext{FC} = +2.84, q = 1.2 	imes 10^{-42}$), <strong>MMP9</strong> ($+3.12, q = 4.5 	imes 10^{-38}$), <strong>CCND1</strong> ($+2.45$), <strong>ERBB2/HER2</strong> ($+2.18$), <strong>MKI67</strong> ($+2.76$), <strong>MYC</strong>, <strong>EGFR</strong>, <strong>PLAU</strong>.
+              <strong>VEGFA</strong> ($\log_2\text{FC} = +2.84, q = 1.2 \times 10^{-42}$), <strong>MMP9</strong> ($+3.12, q = 4.5 \times 10^{-38}$), <strong>CCND1</strong> ($+2.45$), <strong>ERBB2/HER2</strong> ($+2.18$), <strong>MKI67</strong> ($+2.76$), <strong>MYC</strong>, <strong>EGFR</strong>, <strong>PLAU</strong>.
             </p>
           </div>
 
           <div class="info-card" style="padding: 10px 14px;">
             <h3 style="color: #38bdf8; font-size: 1.02rem; margin-bottom: 4px;">🔵 5 ta Keskin So'ngan Supressor Gen (Downregulated):</h3>
             <p style="font-size:0.90rem; margin-bottom:4px;">
-              $\log_2	ext{FC} \le -1.0$ (ifodalanish 2 barobar kamaygan) va $q < 0.05$:
+              $\log_2\text{FC} \le -1.0$ (ifodalanish 2 barobar kamaygan) va $q < 0.05$:
             </p>
             <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.45;">
-              <strong>PTEN</strong> ($\log_2	ext{FC} = -2.15, q = 3.1 	imes 10^{-35}$), <strong>TP53</strong> ($-1.82$), <strong>BRCA1</strong> ($-1.94$), <strong>CDH1</strong> (E-Cadherin, $-2.31$), <strong>RB1</strong> ($-1.75$). 179 ta lokus esa neytral deb topildi.
+              <strong>PTEN</strong> ($\log_2\text{FC} = -2.15, q = 3.1 \times 10^{-35}$), <strong>TP53</strong> ($-1.82$), <strong>BRCA1</strong> ($-1.94$), <strong>CDH1</strong> (E-Cadherin, $-2.31$), <strong>RB1</strong> ($-1.75$). 179 ta lokus esa neytral deb topildi.
             </p>
           </div>
         </div>
@@ -1515,7 +1513,7 @@ ight) \le 0.05$$
               <th>Gen Simvoli</th>
               <th>Tumor Ekspressiyasi ($\mu$)</th>
               <th>Normal Ekspressiyasi ($\mu$)</th>
-              <th>Log2 Fold Change ($\log_2	ext{FC}$)</th>
+              <th>Log2 Fold Change ($\log_2\text{FC}$)</th>
               <th>Tuzatilgan FDR ($q$-value)</th>
               <th>Biologik Ahamiyati</th>
             </tr>
@@ -1526,7 +1524,7 @@ ight) \le 0.05$$
               <td>$9.42 \pm 0.81$</td>
               <td>$2.31 \pm 0.42$</td>
               <td style="color:#ef4444; font-weight:700;">+2.84</td>
-              <td>$1.2 	imes 10^{-42}$</td>
+              <td>$1.2 \times 10^{-42}$</td>
               <td>O'sma angiogenezi drayveri</td>
             </tr>
             <tr>
@@ -1534,7 +1532,7 @@ ight) \le 0.05$$
               <td>$8.86 \pm 0.94$</td>
               <td>$1.85 \pm 0.38$</td>
               <td style="color:#ef4444; font-weight:700;">+3.12</td>
-              <td>$4.5 	imes 10^{-38}$</td>
+              <td>$4.5 \times 10^{-38}$</td>
               <td>Bazal membrana lizisi va invaziya</td>
             </tr>
             <tr>
@@ -1542,7 +1540,7 @@ ight) \le 0.05$$
               <td>$2.14 \pm 0.45$</td>
               <td>$8.76 \pm 0.77$</td>
               <td style="color:#38bdf8; font-weight:700;">-2.15</td>
-              <td>$3.1 	imes 10^{-35}$</td>
+              <td>$3.1 \times 10^{-35}$</td>
               <td>PI3K/Akt yo'lini tormozlovchi supressor</td>
             </tr>
           </tbody>
@@ -1570,7 +1568,7 @@ ight) \le 0.05$$
           <div class="math-display-card" style="margin: 0;">
             <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 Evklid Masofasi va Ward Birlashish Algoritmi:</div>
             <div class="math-equation">
-              $$d(u, v) = \sqrt{\sum_{k=1}^p (u_k - v_k)^2}, \quad \Delta 	ext{ESS} = rac{n_A n_B}{n_A + n_B} ||ar{x}_A - ar{x}_B||^2$$
+              $$d(u, v) = \sqrt{\sum_{k=1}^p (u_k - v_k)^2}, \quad \Delta \text{ESS} = \frac{n_A n_B}{n_A + n_B} ||\bar{x}_A - \bar{x}_B||^2$$
             </div>
           </div>
 
@@ -1605,8 +1603,7 @@ ight) \le 0.05$$
       <div class="math-display-card" style="margin-bottom:8px; padding: 10px 14px;">
         <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 XGBoost eXtreme Gradient Boosting Maqsad Funksiyasi va Regulyarizatsiyasi:</div>
         <div class="math-equation" style="padding: 6px 12px; font-size: 1.05rem;">
-          $$\mathcal{L}^{(t)} = \sum_{i=1}^n l\left(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)
-ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_j|$$
+          $$\mathcal{L}^{(t)} = \sum_{i=1}^n l\left(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)\right) + \gamma T + \frac{1}{2}\lambda \sum_{j=1}^T w_j^2 + \alpha \sum_{j=1}^T |w_j|$$
         </div>
       </div>
 
@@ -1643,7 +1640,7 @@ ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_
         <div class="info-card" style="padding: 10px 14px;">
           <h3 style="color: #c084fc; font-size: 1.02rem;">4. Logistic Regression (Ridge L2)</h3>
           <p style="font-size:0.88rem; margin-bottom:2px;">
-            Sigmoid: $\sigma(z) = rac{1}{1 + e^{-z}}$, L2 jazo koeffitsiyenti $C = 0.5$, `solver='lbfgs'`. Binar ehtimollikni logistik taqsimot orqali modellashtiradi.
+            Sigmoid: $\sigma(z) = \frac{1}{1 + e^{-z}}$, L2 jazo koeffitsiyenti $C = 0.5$, `solver='lbfgs'`. Binar ehtimollikni logistik taqsimot orqali modellashtiradi.
           </p>
         </div>
 
@@ -1673,7 +1670,7 @@ ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_
             <tr>
               <td><strong>XGBoost</strong></td>
               <td>Binary Cross-Entropy (Logloss)</td>
-              <td>$\gamma T + rac{1}{2}\lambda w^2 + lpha |w|$</td>
+              <td>$\gamma T + \frac{1}{2}\lambda w^2 + \alpha |w|$</td>
               <td>$\mathcal{O}(K \cdot d \cdot n \log n)$</td>
               <td><strong>&lt; 0.001 s</strong></td>
               <td>Maksimal aniqlik, 100% ROC-AUC, Zero FN</td>
@@ -1717,7 +1714,7 @@ ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_
 
         <div style="display:flex; flex-direction:column; gap:10px; justify-content: space-between;">
           <div class="info-card">
-            <h3 style="color: #38bdf8;">🏆 Mustaqil Test To'plamida Benchmark ($n_{	ext{test}} = 114$):</h3>
+            <h3 style="color: #38bdf8;">🏆 Mustaqil Test To'plamida Benchmark ($n_{\text{test}} = 114$):</h3>
             <table class="pres-table">
               <thead>
                 <tr>
@@ -1772,7 +1769,7 @@ ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_
             <h3 style="color: #10b981;">📈 DeLong Statistik Taqqoslash Testi va Xulosa:</h3>
             <ul>
               <li><strong>DeLong Testi ($p < 0.01$):</strong> XGBoost modeli ROC-AUC ko'rsatkichi bo'yicha Logistic Regression va KNN modellaridan statistik jihatdan ishonchli darajada ustun;</li>
-              <li><strong>Ideal ROC Egri Chizig'i:</strong> XGBoost va Random Forest egri chiziqlari to'g'ridan-to'g'ri chap yuqori burchakka $(0, 1)$ borib taqaladi ($	ext{AUC} = 1.000$);</li>
+              <li><strong>Ideal ROC Egri Chizig'i:</strong> XGBoost va Random Forest egri chiziqlari to'g'ridan-to'g'ri chap yuqori burchakka $(0, 1)$ borib taqaladi ($\text{AUC} = 1.000$);</li>
               <li><strong>5-Fold CV Barqarorligi:</strong> 5 ta kross-validatsiya qismida standart og'ish $\pm 0.000$ bo'lib, modelning har qanday tanlanmada mutlaq barqarorligini isbotlaydi.</li>
             </ul>
           </div>
@@ -1798,7 +1795,7 @@ ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_
 
         <div style="display:flex; flex-direction:column; gap:10px; justify-content: space-between;">
           <div class="info-card">
-            <h3 style="color: #10b981;">📋 Test To'plami Natijalari ($n_{	ext{test}} = 114$ bemor):</h3>
+            <h3 style="color: #10b981;">📋 Test To'plami Natijalari ($n_{\text{test}} = 114$ bemor):</h3>
             <ul>
               <li><strong>True Positive (TP) = 71:</strong> Haqiqiy saraton holatlarining barchasi 100% to'g'ri aniqlandi;</li>
               <li><strong>True Negative (TN) = 43:</strong> Sog'lom to'qimalarning barchasi to'liq tasdiqlandi;</li>
@@ -1817,11 +1814,17 @@ ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_
             </p>
           </div>
 
-          <div class="math-display-card" style="margin: 0;">
-            <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 Matthews Correlation Coefficient (MCC):</div>
-            <div class="math-equation">
-              $$	ext{MCC} = rac{71 	imes 43 - 0 	imes 0}{\sqrt{(71+0)(71+0)(43+0)(43+0)}} = \mathbf{1.000}$$
+                    <div class="info-card" style="padding: 10px 14px; background: rgba(56, 189, 248, 0.06); border-color: rgba(56, 189, 248, 0.4);">
+            <h3 style="color: #38bdf8; font-size: 0.98rem; margin-bottom: 4px;">📐 Matthews Correlation Coefficient (MCC) Nima?</h3>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: #cbd5e1;">
+              <strong>MCC (Matthews Correlation Coefficient)</strong> — tibbiy binar klassifikatsiyada eng xolis va ishonchli xalqaro mezon. U xatolik matritsasining barcha 4 ta sohasini ($\text{TP}, \text{TN}, \text{FP}, \text{FN}$) to'liq hisobga oladi. Qiymat diapazoni: $-1$ dan $+1$ gacha.
+            </p>
+            <div class="math-equation" style="margin-top: 6px; font-size: 1.05rem;">
+              $$\text{MCC} = \frac{\text{TP} \times \text{TN} - \text{FP} \times \text{FN}}{\sqrt{(\text{TP}+\text{FP})(\text{TP}+\text{FN})(\text{TN}+\text{FP})(\text{TN}+\text{FN})}} = \frac{71 \times 43 - 0}{\sqrt{71 \cdot 71 \cdot 43 \cdot 43}} = \mathbf{1.000}$$
             </div>
+            <p style="font-size: 0.86rem; color: #34d399; margin-top: 4px; font-weight: 700;">
+              ✓ $\mathbf{\text{MCC} = 1.000}$ — bu modelning sinflar nomutanosibligisiz mutlaq mukammal va ishonchli bashorat qilganini isbotlaydi!
+            </p>
           </div>
         </div>
       </div>
@@ -1847,7 +1850,7 @@ ight) + \gamma T + rac{1}{2}\lambda \sum_{j=1}^T w_j^2 + lpha \sum_{j=1}^T |w_
           <div class="math-display-card" style="margin: 0;">
             <div style="font-size:0.90rem; font-weight:700; color:#38bdf8; margin-bottom:4px;">📐 Daraxt Bo'linishidagi Gain Matematikasi:</div>
             <div class="math-equation">
-              $$	ext{Gain} = rac{1}{2}\left[rac{G_L^2}{H_L+\lambda} + rac{G_R^2}{H_R+\lambda} - rac{(G_L+G_R)^2}{H_L+H_R+\lambda}
+              $$\text{Gain} = \frac{1}{2}\left[\frac{G_L^2}{H_L+\lambda} + \frac{G_R^2}{H_R+\lambda} - \frac{(G_L+G_R)^2}{H_L+H_R+\lambda}
 ight] - \gamma$$
             </div>
           </div>
@@ -2031,7 +2034,7 @@ ight] - \gamma$$
         <div class="info-card" style="padding: 10px 14px;">
           <h3 style="color: #f59e0b; font-size:0.96rem;">4. PTEN ➔ Alpelisib</h3>
           <p style="font-size:0.86rem; line-height:1.45; color:#cbd5e1;">
-            PI3K $lpha$-spetsifik ingibitori. PTEN funktsiyasi yo'qolgan yoki PIK3CA faollashgan holatlarda Akt signalini to'xtatadi.
+            PI3K $\alpha$-spetsifik ingibitori. PTEN funktsiyasi yo'qolgan yoki PIK3CA faollashgan holatlarda Akt signalini to'xtatadi.
           </p>
         </div>
 
@@ -2464,6 +2467,7 @@ ight] - \gamma$$
               {left: '$$', right: '$$', display: true},
               {left: '$', right: '$', display: false}
             ],
+            ignoredClasses: ["code-terminal", "terminal-body", "cmd-prompt", "cmd-line"],
             throwOnError: false
           });
         } catch (e) {
